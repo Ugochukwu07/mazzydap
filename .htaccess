@@ -13,8 +13,7 @@
 # DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:mazzydap.com
 RewriteEngine on
 RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} (www\.)?mazzydap.com
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # DO NOT REMOVE THIS LINE AND THE LINES BELLOW SSL_REDIRECT:mazzydap.com
 
 RewriteCond %{REQUEST_FILENAME} !-d
