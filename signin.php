@@ -17,6 +17,7 @@
 					<div class="card-body">
 						<img src="<?php echo LOGO;?>" alt="" class="img-fluid mb-4">
 						<h4 class="mb-3 f-w-400">Signin</h4>
+						<?php include(ROOT_PATH . '/app/includes/message.php'); ?>
 						<form method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 						<div class="input-group mb-1">
 							<div class="input-group-prepend">

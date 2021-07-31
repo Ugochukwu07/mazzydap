@@ -287,13 +287,13 @@ function accoutVal($account){
     return $genErrors;
 }
 
-function planVal($plan){
-    $error = array();
-    $errors = array();
+function categoryVal($cat){
+    $error = $errors = array();
     $regexname = "/^[a-zA-Z\s.]{1}+[a-zA-Z\s]+$/";
+    $table = 'category';
 
     #name
-    if(empty($plan['name'])){
+    if(empty($cat['name'])){
         array_push($error, '11');
         $errors['name'] = 'Title cannot be empty';
     }else{
@@ -301,42 +301,29 @@ function planVal($plan){
     }
 
     #dailyPercent
-    if (empty($plan['dailyPercent'])) {
+    if (empty($cat['body'])) {
         array_push($error, 'll');
-        $errors['dailyPercent'] = 'Cannot be empty';
+        $errors['body'] = 'Cannot be empty';
     }else{
-        $errors['dailyPercent'] = '';
+        $errors['body'] = '';
     }
 
-    #ROI
-    if (empty($plan['ROI'])) {
-        array_push($error, 'll');
-        $errors['ROI'] = 'Cannot be empty';
-    }else{
-        $errors['ROI'] = '';
-    }
-
-    #min
-    if (empty($plan['min'])) {
-        array_push($error, 'll');
-        $errors['min'] = 'Cannot be empty';
-    }else{
-        $errors['min'] = '';
-    }
-
-    #max
-    if (empty($plan['max'])) {
-        array_push($error, 'll');
-        $errors['max'] = 'Cannot be empty';
-    }else{
-        $errors['max'] = '';
-    }
-
-    if(!empty($plan['name']) && !preg_match($regexname, $plan['name'])){
+    if(!empty($cat['name']) && !preg_match($regexname, $cat['name'])){
         array_push($error, '11');
-        $errors['namei'] = 'Invalid characters in plan name';
+        $errors['namei'] = ucwords('Invalid characters in categorie name');
     }else{
         $errors['namei'] = '';
+    }
+
+    if(isset($cat['update-category'])){
+        $existingName = selectOne($table, ['name' => $cat['name']]);
+        if($existingName){array_push($error, '11');
+            $errors['exname'] = ucwords('Invalid characters in categorie name');
+        }else{
+            $errors['exname'] = '';
+        }
+    }else{
+        $errors['exname'] = '';
     }
 
     $genErrors = array($errors, $error);
@@ -527,7 +514,7 @@ function contactVal($message){
     return $genErrors;
 }
 
-function categoryVal($category){
+function catehgoryVal($category){
     $error = array();
     $errors = array();
 

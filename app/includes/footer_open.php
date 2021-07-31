@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-lg-3 col-sm-6  ftr-brand-pp">
-                        <a class="navbar-brand mt30 mb25" href="#"> <img src="<?php echo BASE_URL . '/assets/open/images/'; ?>white-logo.png" alt="Logo" width="100" /></a>
+                        <a class="navbar-brand mt30 mb25" href="#"> <img src="<?php echo LOGO; ?>" alt="Logo" width="170" /></a>
                         <p>News letter dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Enter your email</p>
                         <a href="#" class="btn-main bg-btn3 lnk mt20">Become Partner <i class="fas fa-chevron-right fa-icon"></i><span class="circle"></span></a>
                     </div>

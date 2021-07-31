@@ -202,12 +202,12 @@ if (isset($_POST['signin'])) {
         if ($user && password_verify($_POST['password'], $user['password'])) {
             // login and redirect
             loginUser($user);
-            }else {
-                $_SESSION['message'] = 'Wrong email address or password.';
-                $_SESSION['type'] = 'danger';
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-            }
+        }else {
+            $_SESSION['message'] = 'Wrong email address or password.';
+            $_SESSION['type'] = 'danger';
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+        }
     }else{
         $email = $_POST['email'];
         $password = $_POST['password'];

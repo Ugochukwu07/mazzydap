@@ -29,7 +29,7 @@ if($LOCAL){
 }
 
 define('LOGO', BASE_URL . '/assets/open/images/logo/main.png');
-define('FAVI', BASE_URL . '/assets/open/images/logo/favicon.png');
+define('FAVI', BASE_URL . '/assets/open/images/logo/fav.png');
 define('TEXT', BASE_URL . '/assets/open/images/logo/text.png');
 include('reuseables.php');
 ?>

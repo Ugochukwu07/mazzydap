@@ -16,7 +16,7 @@
     <meta name="author" content="ekwuemeugochukwu83@gmail.com" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="<?php echo BASE_URL . '/'?>assets/dashboard/images/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="<?php echo FAVI;?>" type="image/x-icon">
 
     <!-- font css -->
     <link rel="stylesheet" href="<?php echo BASE_URL . '/'?>assets/dashboard/fonts/font-awsome-pro/css/pro.min.css">

@@ -73,10 +73,10 @@
 						<span>Add and remove Categories from the database.</span>
 					</li>
 					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/cat/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
+						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/categories/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
 					</li>
 					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/cat/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
+						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/categories/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
 					</li>
                     
 					<li class="pc-item pc-caption">
@@ -180,21 +180,21 @@
 					</li>
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<img src="assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar">
+							<img src="<?php echo BASE_URL . '/assets/dashboard/images/users/' . $xUser['image']; ?>" alt="user-image" class="user-avtar">
 							<span>
-								<span class="user-name">Joseph William</span>
-								<span class="user-desc">Administrator</span>
+								<span class="user-name"><?php echo $xUser['username']; ?></span>
+								<span class="user-desc"><?php if($xUser['status'] === 1):?>Administrator<?php endif;?></span>
 							</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
 							<div class=" dropdown-header">
 								<h6 class="text-overflow m-0">Welcome !</h6>
 							</div>
-							<a href="#!" class="dropdown-item">
+							<a href="<?php echo BASE_URL . '/dashboard/profile.php'; ?>" class="dropdown-item">
 								<i data-feather="user"></i>
 								<span>My Account</span>
 							</a>
-							<a href="#!" class="dropdown-item">
+							<a href="<?php echo BASE_URL . '/dashboard/profile.php'; ?>" class="dropdown-item">
 								<i data-feather="settings"></i>
 								<span>Settings</span>
 							</a>
@@ -206,7 +206,7 @@
 								<i data-feather="lock"></i>
 								<span>Lock Screen</span>
 							</a>
-							<a href="#!" class="dropdown-item">
+							<a href="<?php echo BASE_URL . '/logout'; ?>" class="dropdown-item">
 								<i data-feather="power"></i>
 								<span>Logout</span>
 							</a>

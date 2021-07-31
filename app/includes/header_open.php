@@ -1,8 +1,8 @@
     <!--Start Preloader -->
     <div class="onloadpage" id="page_loader">
         <div class="pre-content">
-            <div class="logo-pre"><img src="<?php echo BASE_URL . '/assets/open/images'; ?>/logo.png" alt="Logo" class="img-fluid" /></div>
-            <div class="pre-text-"><span>Mazzy DAP - Creative Digital Art and Printing...</span>Have Patience</div>
+            <div class="logo-pre"><img src="<?php echo LOGO; ?>" alt="Logo" class="img-fluid" /></div>
+            <!-- <div class="pre-text- text-color"><span>Mazzy DAP - Creative Digital Art and Printing...</span>Have Patience</div> -->
         </div>
     </div>
     <!--End Preloader -->
@@ -12,8 +12,8 @@
             <div class="menu-header">
                 <div class="dsk-logo">
                     <a class="nav-brand" href="<?php echo BASE_URL; ?>">
-                        <img src="<?php echo BASE_URL . '/assets/open/images'; ?>/white-logo.png" alt="Logo" class="mega-white-logo" />
-                        <img src="<?php echo BASE_URL . '/assets/open/images'; ?>/logo.png" alt="Logo" class="mega-darks-logo" />
+                        <img src="<?php echo FAVI; ?>" alt="Logo" class="mega-white-logo" />
+                        <img src="<?php echo FAVI; ?>" alt="Logo" class="mega-darks-logo" />
                     </a>
                 </div>
                 <div class="custom-nav" role="navigation">
