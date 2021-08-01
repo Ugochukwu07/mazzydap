@@ -74,19 +74,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                    <h5>Recent Products</h5>
-                    <hr>
-                    <?php $products = selectAll('products');?>
-                    <?php for($i = 0; $i < 5; $i++):?>
-                        <div class="card mb-3">
-                            <img class="img-fluid card-img-top" src="<?php echo BASE_URL . '/assets/dashboard/images/products/' . $products[$i]['thumb_image']; ?>" alt="<?php echo $products[$i]['title']; ?>">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $products[$i]['title']; ?></h5>
-                                <p class="card-text"><?php echo html_entity_decode(substr($products[$i]['about'], 0, 150) . '...'); ?></p>
-                                <p class="card-text"><small class="text-muted">Last updated <?php echo timeDiff('now', $products[$i]['created_at']);?> ago</small></p>
+                        <h5>Recent Products</h5>
+                        <hr>
+                        <?php $products = selectAll('products');?>
+                        <?php for($i = 0; $i < 5; $i++):?>
+                            <div class="card mb-3">
+                                <img class="img-fluid card-img-top" src="<?php echo BASE_URL . '/assets/dashboard/images/products/' . $products[$i]['thumb_image']; ?>" alt="<?php echo $products[$i]['title']; ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $products[$i]['title']; ?></h5>
+                                    <p class="card-text"><?php echo html_entity_decode(substr($products[$i]['about'], 0, 150) . '...'); ?></p>
+                                    <p class="card-text"><small class="text-muted">Last updated <?php echo timeDiff('now', $products[$i]['created_at']);?> ago</small></p>
+                                </div>
                             </div>
-                        </div>
-                    <?php endfor;?>
+                        <?php endfor;?>
                     </div>
                 </div>
             </div>

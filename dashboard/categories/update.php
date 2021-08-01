@@ -1,8 +1,14 @@
 <?php 
 	include('../../path.php');
 	include(ROOT_PATH . '/app/controllers/categories.php');
+    if(!isset($_GET['cat_id']) || empty($id)){
+        $_SESSION['message'] = 'Please Select a Category';
+        $_SESSION['type'] = 'warning';
+        header('location: ' . BASE_URL . '/dashboard/categories/');
+        exit();
+    }
 
-	$title = $xUser['username'] . "'s Dashboard";
+	$title = "Update";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +29,7 @@
                             <h5 class="m-b-10"><?php echo $title; ?></h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Categories</a></li>
                             <li class="breadcrumb-item"><?php echo $title; ?></li>
                         </ul>
                     </div>
@@ -33,30 +39,31 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="row">
-            <?php include(ROOT_PATH . '/app/includes/message.php'); ?>
-            <!-- support-section start -->
-            <div class="col-xl-12 col-md-12">
-                <div class="row">
-                    <div class="col-12">
-                        <h5>Recent Categories</h5>
+            <div class="col-12 col-md-10 col-lg-9 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mt-5">Update Your Product Categories</h5>
                     </div>
-                    <hr>
-                    <?php $categories = selectAllLimits('category', [], $start, $rpp);?>
-                    <?php foreach($categories as $category):?>
-                        <div class="col-md-6 col-lg-4 col-12">
-                            <div class="card">
-                                <!--  <img class="img-fluid card-img-top" src="<?php echo BASE_URL . '/assets/dashboard/images/categories/' . $products[$i]['thumb_image']; ?>" alt="<?php echo $products[$i]['title']; ?>"> -->
-                                <div class="card-header">
-                                        <h5 class="card-title"><?php echo $category['name']; ?></h5>
-                                </div> 
-                                <div class="card-body">
-                                    <p class="card-text"><?php echo html_entity_decode(substr($category['body'], 0, 350) . '...'); ?></p>
-                                    <p class="card-text"><small class="text-muted">Last updated <?php echo timeDiff('now', $category['created_at']);?> ago</small></p>
-                                </div>
+                    <div class="card-body">
+                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="was-validated" enctype="multipart/form-data">
+                            <!-- <div class="custom-file form-group mb-2">
+                                <input type="file" class="custom-file-input" id="thumb_image" name="thumb_image" required>
+                                <label class="custom-file-label" for="thumb_image">Choose file...</label>
+                            </div> -->
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $name;?>" id="name" placeholder="Name Here..." required>
+							    <small class="badge badge-light-danger "><?php echo $errors['name']; ?></small>
                             </div>
-                        </div>
-                    <?php endforeach;?>
-                    <?php include(ROOT_PATH . '/app/includes/paging.php'); ?>
+                            <div class="form-group">
+                                <label for="body">About Category</label>
+                                <textarea class="form-control" name="body" id="body" rows="3" required><?php echo $body?></textarea>
+							    <small class="badge badge-light-danger "><?php echo $errors['body']; ?></small>
+                            </div>
+                            <button type="submit" name="update-category" class="btn  btn-primary">Add Category</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
