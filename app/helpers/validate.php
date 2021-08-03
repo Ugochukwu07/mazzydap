@@ -294,7 +294,7 @@ function categoryVal($cat){
 
     #name
     if(empty($cat['name'])){
-        array_push($error, '11');
+        array_push($error, '111');
         $errors['name'] = 'Title cannot be empty';
     }else{
         $errors['name'] = '';
@@ -302,14 +302,14 @@ function categoryVal($cat){
 
     #dailyPercent
     if (empty($cat['body'])) {
-        array_push($error, 'll');
+        array_push($error, 'll2');
         $errors['body'] = 'Cannot be empty';
     }else{
         $errors['body'] = '';
     }
 
     if(!empty($cat['name']) && !preg_match($regexname, $cat['name'])){
-        array_push($error, '11');
+        array_push($error, '113');
         $errors['namei'] = ucwords('Invalid characters in categorie name');
     }else{
         $errors['namei'] = '';
@@ -317,8 +317,9 @@ function categoryVal($cat){
 
     if(isset($cat['update-category'])){
         $existingName = selectOne($table, ['name' => $cat['name']]);
-        if($existingName){array_push($error, '11');
-            $errors['exname'] = ucwords('Invalid characters in categorie name');
+        if($existingName){
+            array_push($error, '114');
+            $errors['exname'] = ucwords('Category Name alredy exists');
         }else{
             $errors['exname'] = '';
         }

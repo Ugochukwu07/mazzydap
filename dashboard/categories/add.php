@@ -40,10 +40,13 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="was-validated" enctype="multipart/form-data">
-                            <!-- <div class="custom-file form-group mb-2">
-                                <input type="file" class="custom-file-input" id="thumb_image" name="thumb_image" required>
-                                <label class="custom-file-label" for="thumb_image">Choose file...</label>
-                            </div> -->
+                            <div class="custom-file form-group mb-2">
+                                <input type="file" class="custom-file-input" id="image" required name="image">
+                                <label class="custom-file-label" for="image">Choose file...</label>
+                            </div>
+                            <small class="badge badge-light-danger "><?php echo $errors['failed']; ?></small>
+                            <small class="badge badge-light-danger "><?php echo $errors['type']; ?></small>
+                            <small class="badge badge-light-danger "><?php echo $errors['empty']; ?></small>
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" name="name" value="<?php echo $name;?>" id="name" placeholder="Name Here..." required>

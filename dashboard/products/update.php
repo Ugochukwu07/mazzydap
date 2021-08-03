@@ -40,36 +40,36 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="was-validated" enctype="multipart/form-data">
+                            
+                            <input type="hidden" name="id" id="id" class="form-control" value="<?php echo $id; ?>">
+                            
                             <div class="custom-file form-group mb-2">
-                                <input type="file" class="custom-file-input" id="thumb_image" required name="thumb_image">
+                                <input type="file" class="custom-file-input" id="thumb_image" name="thumb_image" required>
                                 <label class="custom-file-label" for="thumb_image">Choose file...</label>
                             </div>
-                            <small class="badge badge-light-danger "><?php echo $errors['failed']; ?></small>
-                            <small class="badge badge-light-danger "><?php echo $errors['type']; ?></small>
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" value="<?php echo $titlem;?>" required name="title" id="title" placeholder="Title Here...">
-                                <small class="badge badge-light-danger "><?php echo $errors['title']; ?></small>
+                                <input type="text" class="form-control" value="<?php echo $title;?>" name="title" id="title" placeholder="Title Here..." required>
                             </div>
                             <div class="form-group">
                                 <label for="sub_title">Sub Title</label>
-                                <input type="text" class="form-control" value="<?php echo $sub_title;?>" required name="sub_title" id="sub_title" placeholder="Sub Title Here">
+                                <input type="text" class="form-control" value="<?php echo $sub_title;?>" name="sub_title" id="sub_title" placeholder="Sub Title Here" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Client Name</label>
-                                <input type="text" class="form-control" value="<?php echo $client_name;?>" required name="client_name" id="client_name" placeholder="Client Name">
+                                <input type="text" class="form-control" value="<?php echo $client_name;?>" name="client_name" id="client_name" placeholder="Client Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Client Email</label>
-                                <input type="email" class="form-control" value="<?php echo $client_email;?>" required name="client_email" id="client_email" placeholder="Client Email">
+                                <input type="email" class="form-control" value="<?php echo $cleint_email;?>" name="client_email" id="client_email" placeholder="Client Email" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Client Phone</label>
-                                <input type="tel" class="form-control" value="<?php echo $client_phone;?>" required name="client_phone" id="client_phone" placeholder="Client Phone">
+                                <input type="tel" class="form-control" value="<?php echo $cleint_phone;?>" name="client_phone" id="client_phone" placeholder="Client Phone" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Product Category</label>
-                                <select class="custom-select" required name="cat_id">
+                                <select class="custom-select" name="cat_id" required>
                                     <?php $cats = selectAll('category');?>
                                     <option value=""></option>
                                     <?php foreach($cats as $cat):?>
@@ -83,11 +83,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="ex_link">External Link(Optional)</label>
-                                <input type="text" class="form-control" value="<?php echo $ex_link;?>" required name="ex_link" id="ex_link" placeholder="https://bit.ly/RQse2ht...">
+                                <input type="text" class="form-control" value="<?php echo $ex_link;?>" name="ex_link" id="ex_link" placeholder="https://bit.ly/RQse2ht..." required>
                             </div>
                             <div class="form-group">
                                 <label for="about">About Product</label>
-                                <textarea class="form-control" required name="about" id="about" rows="3"><?php echo $about;?></textarea>
+                                <textarea class="form-control" name="about" id="about" rows="3" required><?php echo $about;?></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
@@ -99,7 +99,7 @@
                                     <label class="form-check-label" for="publish">Mark as Activie</label>
                                 </div>
                             </div>
-                            <button type="submit" name="add-product" class="btn  btn-primary">Add Product</button>
+                            <button type="submit" name="Update-product" class="btn  btn-primary">update Product</button>
                         </form>
                     </div>
                 </div>

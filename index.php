@@ -24,7 +24,7 @@ $title = 'Home';
                 </div>
                 <div class="col-lg-7">
                     <div class="hero-content-sec wow fadeIn" data-wow-delay="0.8s">
-                        <div class="video-intro-pp"><a class="video-link play-video" href="https://www.youtube.com/watch?v=SZEflIVnhH8?autoplay=1&amp;rel=0"><span class="triangle-play"></span></a></div>
+                        <div class="video-intro-pp"><a class="video-link play-video" href="http://www.youtube.com/watch?v=SZEflIVnhH8?autoplay=1&amp;rel=0"><span class="triangle-play"></span></a></div>
                         <div class="title-hero-oth">
                             <p>We design digital solutions <span>for brands and companies</span></p>
                         </div>
@@ -593,7 +593,7 @@ $title = 'Home';
                 <div class="col-lg-6">
                     <div class="video-testimonials owl-carousel">
                         <div class="video-review" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                            <a class="video-link" href="https://www.youtube.com/watch?v=SZEflIVnhH8?autoplay=1&amp;rel=0"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>client/client-pic.jpg" alt="client" class="img-fluid">
+                            <a class="video-link" href="http://www.youtube.com/watch?v=SZEflIVnhH8?autoplay=1&amp;rel=0"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>client/client-pic.jpg" alt="client" class="img-fluid">
                                 <div class="review-vid-details">
                                     <div class="-vid-ico"><span class="triangle-play2"></span></div>
                                     <p>Cina Cleaves</p>
@@ -601,7 +601,7 @@ $title = 'Home';
                             </a>
                         </div>
                         <div class="video-review" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                            <a class="video-link" href="https://www.youtube.com/watch?v=SZEflIVnhH8?autoplay=1&amp;rel=0"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>client/client-pic-a.jpg" alt="client" class="img-fluid">
+                            <a class="video-link" href="http://www.youtube.com/watch?v=SZEflIVnhH8?autoplay=1&amp;rel=0"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>client/client-pic-a.jpg" alt="client" class="img-fluid">
                                 <div class="review-vid-details">
                                     <div class="-vid-ico"><span class="triangle-play2"></span></div>
                                     <p>Jokvch Marlin</p>

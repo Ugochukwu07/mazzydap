@@ -41,22 +41,27 @@
                         <h5>Recent Categories</h5>
                     </div>
                     <hr>
-                    <?php $categories = selectAllLimits('category', [], $start, $rpp);?>
+                    <?php $categories = selectAllLimits('category', [], $start, $results_per_page);?>
                     <?php foreach($categories as $category):?>
-                        <div class="col-md-6 col-lg-4 col-12">
+                        <div class="col-md-12 col-lg-6 col-12">
                             <div class="card">
-                                <!--  <img class="img-fluid card-img-top" src="<?php echo BASE_URL . '/assets/dashboard/images/categories/' . $products[$i]['thumb_image']; ?>" alt="<?php echo $products[$i]['title']; ?>"> -->
                                 <div class="card-header">
-                                        <h5 class="card-title"><?php echo $category['name']; ?></h5>
+                                    <img class="img-fluid card-img-top rounded mb-2" src="<?php echo BASE_URL . '/assets/dashboard/images/categories/' . $category['image']; ?>" alt="<?php echo $category['name']; ?>">
+                                    <br><br>
+                                    <h3 class="card-title text-primary"><?php echo $category['name']; ?></h3>
                                 </div> 
                                 <div class="card-body">
                                     <p class="card-text"><?php echo html_entity_decode(substr($category['body'], 0, 350) . '...'); ?></p>
                                     <p class="card-text"><small class="text-muted">Last updated <?php echo timeDiff('now', $category['created_at']);?> ago</small></p>
                                 </div>
+                                <div class="card-footer text-center">
+                                    <a class="btn btn-primary" href="<?php echo BASE_URL . '/dashboard/categories/update.php?cat_id=' . $category['id']; ?>">Edit</a>
+                                    <a class="btn btn-danger" href="<?php echo BASE_URL . '/dashboard/categories/?cat_del_id=' . $category['id']; ?>">Delete</a>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach;?>
-                    <?php include(ROOT_PATH . '/app/includes/paging.php'); ?>
+                    <?php // include(ROOT_PATH . '/app/includes/paging.php'); ?>
                 </div>
             </div>
         </div>

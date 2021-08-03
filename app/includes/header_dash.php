@@ -180,7 +180,7 @@
 					</li>
 					<li class="dropdown pc-h-item">
 						<a class="pc-head-link dropdown-toggle arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-							<img src="<?php echo BASE_URL . '/assets/dashboard/images/users/' . $xUser['image']; ?>" alt="user-image" class="user-avtar">
+							<img src="<?php echo BASE_URL . '/assets/dashboard/images/users/' . $xUser['image']; ?>" alt="user-image" class="user-avtar bg-gray">
 							<span>
 								<span class="user-name"><?php echo $xUser['username']; ?></span>
 								<span class="user-desc"><?php if($xUser['status'] === 1):?>Administrator<?php endif;?></span>

@@ -1,6 +1,6 @@
 <?php 
 /* define('', '');*/
-ob_start();
+//ob_start();
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){  
     $url = "https://";   
 }else{ 

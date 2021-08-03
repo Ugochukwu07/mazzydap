@@ -12,7 +12,7 @@
                     $totalButtons = intdiv($totalContents, $resultPerPage);
                     $currentPage = $_GET['page'];
                     $startContent = $resultPerPage * $currentPage;
-                    $pages = selectAllLimits($table, )
+                    $pages = selectAllLimits($table, );
                 
                 ?>
                     

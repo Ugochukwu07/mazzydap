@@ -1,12 +1,12 @@
 <?php 
 	include('../../path.php');
 	include(ROOT_PATH . '/app/controllers/categories.php');
-    if(!isset($_GET['cat_id']) || empty($id)){
+    /* if(!isset($_GET['cat_id']) || empty($id)){
         $_SESSION['message'] = 'Please Select a Category';
         $_SESSION['type'] = 'warning';
         header('location: ' . BASE_URL . '/dashboard/categories/');
         exit();
-    }
+    } */
 
 	$title = "Update";
 ?>
@@ -46,10 +46,13 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="was-validated" enctype="multipart/form-data">
-                            <!-- <div class="custom-file form-group mb-2">
-                                <input type="file" class="custom-file-input" id="thumb_image" name="thumb_image" required>
-                                <label class="custom-file-label" for="thumb_image">Choose file...</label>
-                            </div> -->
+                            <div class="custom-file form-group mb-1">
+                                <input type="file" class="custom-file-input" id="image" name="image">
+                                <label class="custom-file-label" for="image">Choose file...</label>
+                            </div>
+                            <small class="text-success ">Leave Blank if you don't want to update.</small>
+                            <small class="badge badge-light-danger "><?php echo $errors['failed']; ?></small>
+                            <small class="badge badge-light-danger "><?php echo $errors['type']; ?></small>
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -61,7 +64,7 @@
                                 <textarea class="form-control" name="body" id="body" rows="3" required><?php echo $body?></textarea>
 							    <small class="badge badge-light-danger "><?php echo $errors['body']; ?></small>
                             </div>
-                            <button type="submit" name="update-category" class="btn  btn-primary">Add Category</button>
+                            <button type="submit" name="update-category" class="btn  btn-success">Update Category</button>
                         </form>
                     </div>
                 </div>

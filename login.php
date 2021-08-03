@@ -44,7 +44,7 @@
 						</div>
 						<button class="btn btn-block btn-primary mb-4" name="signin">Signin</button>
 </form>
-						<p class="mb-0 text-muted">Forgot your password? Click to Reset <a href="<?php echo BASE_URL . '/forget/'?>" class="f-w-400">Recover</a></p>
+						<p class="mb-0 text-muted">Forgot your password? Click to Reset <a href="<?php echo BASE_URL . '/forget/'; ?>" class="f-w-400">Recover</a></p>
 					</div>
 				</div>
 			</div>
