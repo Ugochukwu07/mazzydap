@@ -22,9 +22,9 @@ if($LOCAL){
     error_reporting(0);
     define('BASE_URL', 'https://mazzydap.com');
     define('HOST', 'localhost');
-    define('DB_USER', 'u741340309_admin');
-    define('DB_PASS', 'Chibuike2020');
-    define('DB_NAME', 'u741340309_main');
+    define('DB_USER', 'mazzydap_admin');
+    define('DB_PASS', 'omo]2R1+4mK6SC');
+    define('DB_NAME', 'mazzydap_main');
     define("DEMO", false);
 }
 
