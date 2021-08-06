@@ -1,6 +1,5 @@
 <?php 
 include(ROOT_PATH . '/app/database/db.php');
-include(ROOT_PATH . '/app/helpers/functions.php');
 include(ROOT_PATH . '/app/helpers/file_manger.php');
 include(ROOT_PATH . '/app/helpers/validate.php');
 include(ROOT_PATH . '/app/helpers/paging.php');

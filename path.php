@@ -1,6 +1,7 @@
 <?php 
 /* define('', '');*/
-//ob_start();
+ob_start();
+session_start();
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){  
     $url = "https://";   
 }else{ 
@@ -27,6 +28,8 @@ if($LOCAL){
     define('DB_NAME', 'mazzydap_main');
     define("DEMO", false);
 }
+
+include(ROOT_PATH . '/app/helpers/functions.php');
 
 define('LOGO', BASE_URL . '/assets/open/images/logo/main.png');
 define('FAVI', BASE_URL . '/assets/open/images/logo/fav.png');

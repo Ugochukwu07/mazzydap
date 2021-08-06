@@ -1,28 +1,5 @@
 <?php 
-session_start();
 require('connect.php');
-function dd($value) { // to be deleted
-    echo "<pre>", print_r($value, true), "</pre>";
-    die();
-}
-
-
-#CODE GENERATION VARIABLES
-$p_code = '0123456789';
-$e_code = 'abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-$referal_code = '0123456789abcdefghijklmnopqrstuvwzyz';
-$user_key = $p_code . $e_code;
-
-function generateRandomString($x, $lenght){
-    return substr(str_shuffle(str_repeat($x, ceil($lenght/strlen($x)))), 1,$lenght);
-}
-
-
-function sessionDeclare($data = []){
-    foreach($data as $key => $value){
-        $_SESSION[$key] = $data[$key];
-    }
-}
 
 function executeQurey($sql, $data) {
 global $conn;

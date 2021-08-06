@@ -43,7 +43,7 @@
                                     <i class="icon feather icon-shopping-cart text-primary mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5><?php echo count(selectAll('products')) + 7000;?></h5>
+                                    <h5><?php echo count(selectAll('products'));?></h5>
                                     <span>Products</span>
                                 </div>
                             </div>

@@ -1,7 +1,8 @@
 <?php 
 include('path.php');
+include(ROOT_PATH . '/app/controllers/products.php');
 
-$title = 'Details';
+$title = $product['title'];
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -11,6 +12,15 @@ $title = 'Details';
 <body class="active-dark">
     <?php include(ROOT_PATH . '/app/includes/header_open.php'); ?>
   <!--Breadcrumb Area-->
+  <style>
+    .banner-3{
+      background: url(<?php echo BASE_URL . '/assets/dashboard/images/products/' . $product['thumb_image']; ?>);
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
   <section class="breadcrumb-area banner-3">
     <div class="text-block">
       <div class="container">
@@ -19,13 +29,13 @@ $title = 'Details';
             <div class="bread-inner">
               <div class="bread-menu">
                 <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="portfolio.html">Portfolio</a></li>
-                  <li><a href="#">Portfolio Details</a></li>
+                  <li><a href="<?php echo BASE_URL . '/'?>">Home</a></li>
+                  <li><a href="<?php echo BASE_URL . '/works'?>">Products</a></li>
+                  <li><a href="#"><?php echo $product['title']; ?></a></li>
                 </ul>
               </div>
               <div class="bread-title">
-                <h2>Our Portfolio</h2>
+                <h2><?php echo $product['title']; ?></h2>
               </div>
             </div>
           </div>
@@ -40,9 +50,9 @@ $title = 'Details';
       <div class="row justify-content-left">
         <div class="col-lg-7">
           <div class="common-heading pp p-details">
-            <span>Branding Creative</span>
-            <h1>Justo Erat Tempor Eros Adipiscing</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus, risus sit amet auctor sodales, justo erat tempor eros.</p>
+            <span><?php echo $category['name']; ?></span>
+            <h1><?php echo $product['title']; ?></h1>
+            <?php echo $product['about']; ?>
           </div>
         </div>
         <div class="col-lg-5">
@@ -51,35 +61,41 @@ $title = 'Details';
               <ul>
                 <li>
                   <i class="fas fa-user"></i>
-                  <p>Client Name: <span>Creative Tom</span></p>
+                  <p>Client Name: <span><?php echo $product['client_name']; ?></span></p>
+                </li>
+                <li>
+                  <i class="fas fa-phone"></i>
+                  <p>Client Phone: <span><?php echo $product['client_phone']; ?></span></p>
+                </li>
+                <li>
+                  <i class="fas fa-envelope"></i>
+                  <p>Client Email: <span><?php echo $product['client_email']; ?></span></p>
                 </li>
                 <li>
                   <i class="fas fa-tags"></i>
-                  <p>Project Category: <span>Web design, Developments</span></p>
+                  <p>Project Category: <span><?php echo $category['name']; ?></span></p>
                 </li>
                 <li>
                   <i class="fas fa-calendar-alt"></i>
-                  <p>Project Date: <span>20 May 2020</span></p>
+                  <p>Project Date: <span><?php echo date('F j, Y', strtotime($product['created_at'])); ?></span></p>
                 </li>
-                <li><a href="#" target="_blank">Open External Link</a></li>
+                <li><a href="<?php echo $product['ex_link']; ?>" target="_blank">Open External Link</a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-12 single-card-item">
-          <div class="isotope_item pv-">
-            <div class="item-image">
-              <img src="images/portfolio/project-view-1.jpg" alt="project name" class="img-fluid"/>
-             </div>
-            </div>
-    <div class="isotope_item pv- mt30">
-            <div class="item-image">
-        <img src="images/portfolio/project-view-2.jpg" alt="project name" class="img-fluid"/>
+        <?php $files = selectAll($table3, ['product_id' => $product['id']]); $fx = 0;?>
+        <?php foreach($files as $file):?>
+          <div class="col-lg-4 col-md-6 col-12 single-card-item">
+            <div class="isotope_item pv- <?php if($fx === 0){echo '';}else{echo "mt30";}?>">
+              <div class="item-image">
+                <img src="<?php echo BASE_URL . '/assets/dashboard/images/files/' . $file['name']; ?>" alt="<?php echo $product['name'] . '_' . $file['id']; ?>" class="img-fluid"/>
+              </div>
             </div>
           </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </section>

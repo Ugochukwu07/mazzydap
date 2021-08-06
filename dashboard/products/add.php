@@ -92,9 +92,9 @@
                             <div class="form-group">
                                 <div class="form-check">
                                     <?php if(empty($publish)):?>
-                                        <input class="form-check-input" type="checkbox" id="publish">
+                                        <input class="form-check-input" name="publish" type="checkbox" id="publish">
                                     <?php else:?>
-                                        <input class="form-check-input" checked type="checkbox" id="publish">
+                                        <input class="form-check-input" name="publish" checked type="checkbox" id="publish">
                                     <?php endif; ?>
                                     <label class="form-check-label" for="publish">Mark as Activie</label>
                                 </div>

@@ -23,6 +23,9 @@
                         <li><a href="<?php echo BASE_URL . '/whyus'; ?>" class="menu-links">Why Us</a></li>
                         <li><a href="<?php echo BASE_URL . '/works'; ?>" class="menu-links">Our Works</a></li>
                         <li><a href="<?php echo BASE_URL . '/services'; ?>" class="menu-links">Services</a></li>
+                        <?php if(isset($_SESSION['id'])):?>
+                            <li><a href="<?php echo BASE_URL . '/dashboard/'; ?>" class="menu-links">Dashboard</a></li>
+                        <?php endif;?>
                         <li><a href="#" class="menu-links right-bddr">&nbsp;</a>
                             <!--menu right border-->
                             <li class="contact-show"><a href="#" class="btn-round- trngl btn-br bg-btn"><i class="fas fa-phone-alt"></i></a>
@@ -70,6 +73,9 @@
                     <li><a href="<?php echo BASE_URL . '/whyus'; ?>" class="menu-links">Why Us</a></li>
                     <li><a href="<?php echo BASE_URL . '/works'; ?>" class="menu-links">Our Works</a></li>
                     <li><a href="<?php echo BASE_URL . '/services'; ?>" class="menu-links">Services</a></li>
+                    <?php if(isset($_SESSION['id'])):?>
+                        <li><a href="<?php echo BASE_URL . '/dashboard/'; ?>" class="menu-links">Dashboard</a></li>
+                    <?php endif;?>
                 </ul>
                 <ul class="bottom-nav">
                     <li class="prb">
