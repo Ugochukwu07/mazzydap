@@ -26,6 +26,7 @@ if(isset($_GET['token'])){
 
 if(isset($_GET['p_u_id'])){
     $product =selectOne($table, ['id' => $_GET['p_u_id']]);
+    $id = $_GET['p_u_id'];
     $titlem = $product['title'];
     $sub_title = $product['sub_title'];
     $client_name = $product['client_name'];
@@ -36,6 +37,21 @@ if(isset($_GET['p_u_id'])){
     $publish = isset($product['publish']) ? 1 : 0;
     $cat_id = $product['cat_id'];
 }
+
+if(isset($_GET['p_id'])){
+    if(isset($_GET['a'])){
+        update($table, $_GET['p_id'], ['publish' => 0]);
+        setMsg('Product Unpublished Successfuly', 'primary', '/dashboard/products/');
+    }else{
+        update($table, $_GET['p_id'], ['publish' => 1]);
+        setMsg('Product Published Successfuly', 'primary', '/dashboard/products/');
+    }
+}
+
+/* if(isset($_GET['p_del_id'])){
+    header('location:' BASE_URL . '/dashboard/promt.php?t=' . $table . '&id=' . $_GET['p_del_id'] . '&a=del');
+    exit();
+} */
 
 if(isset($_POST['add-product'])){
     $genErrors = upload('/assets/dashboard/images/products/', XIMAGE, 'thumb_image');
@@ -74,8 +90,8 @@ if(isset($_POST['update-product'])){
         $id = $_POST['id'];
         $_POST['user_id'] = $xUser['id'];
         $_POST['publish'] = isset($_POST['publish']) ? 1 : 0;
-        unset($_POST['update-product'], $_POST['id']);
-        $product_id = update($table, $id, $_POST);dd($product_id);
+        unset($_POST['update-product'], $_POST['id']);//dd($_POST);
+        $product_id = update($table, $id, $_POST);
             $_SESSION['message'] = 'Category Updated Successfully';
             $_SESSION['type'] = 'success';
             header('location:' . BASE_URL . '/dashboard/products/');

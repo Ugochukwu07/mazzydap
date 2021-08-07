@@ -63,15 +63,15 @@
                                 <input type="text" class="form-control" value="<?php echo $client_name;?>" name="client_name" id="client_name" placeholder="Client Name" required>
                             </div>
                             <div class="form-group">
-                                <label for="client_name">Client Email</label>
+                                <label for="client_email">Client Email</label>
                                 <input type="email" class="form-control" value="<?php echo $client_email;?>" name="client_email" id="client_email" placeholder="Client Email" required>
                             </div>
                             <div class="form-group">
-                                <label for="client_name">Client Phone</label>
+                                <label for="client_phone">Client Phone</label>
                                 <input type="tel" class="form-control" value="<?php echo $client_phone;?>" name="client_phone" id="client_phone" placeholder="Client Phone" required>
                             </div>
                             <div class="form-group">
-                                <label for="client_name">Product Category</label>
+                                <label for="cat_id">Product Category</label>
                                 <select class="custom-select" name="cat_id" required>
                                     <?php $cats = selectAll('category');?>
                                     <option value=""></option>
