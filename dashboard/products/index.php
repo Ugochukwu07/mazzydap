@@ -59,7 +59,7 @@
                                         <td><?php $cat = selectOne($table2, ['id' => $product['cat_id']]);?><a href="<?php echo BASE_URL . '/dashboard/categories/?id=' . $cat['id'];?>" class='text-primary' ><?php echo $cat['name'];?></a></td>
                                         <td><?php echo date('F j, Y h:i:s', strtotime($product['created_at'])); ?></td>
                                         <td><a href="<?php echo BASE_URL . '/dashboard/products/view.php?id=' . $product['id']; ?>">View</a></td>
-                                        <td><a class="text-info" href="<?php echo BASE_URL . '/dashboard/products/update.php?id=' . $product['id']; ?>">Update</a></td>
+                                        <td><a class="text-info" href="<?php echo BASE_URL . '/dashboard/products/update.php?p_u_id=' . $product['id']; ?>">Update</a></td>
                                         <?php if($product['publish']):?>
                                             <td><a class="text-warning" href="<?php echo BASE_URL . '/dashboard/products/?p_id=' . $product['id'] . '&a=unpublish'; ?>">Unpublish</a></td>
                                         <?php else:?>

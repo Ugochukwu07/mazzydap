@@ -44,12 +44,15 @@
                             <input type="hidden" name="id" id="id" class="form-control" value="<?php echo $id; ?>">
                             
                             <div class="custom-file form-group mb-2">
-                                <input type="file" class="custom-file-input" id="thumb_image" name="thumb_image" required>
+                                <input type="file" class="custom-file-input" id="thumb_image" name="thumb_image">
                                 <label class="custom-file-label" for="thumb_image">Choose file...</label>
                             </div>
+                            <small class="text-success ">Leave Blank if you don't want to update.</small>
+                            <small class="badge badge-light-danger "><?php echo $errors['failed']; ?></small>
+                            <small class="badge badge-light-danger "><?php echo $errors['type']; ?></small>
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" value="<?php echo $title;?>" name="title" id="title" placeholder="Title Here..." required>
+                                <input type="text" class="form-control" value="<?php echo $titlem;?>" name="title" id="title" placeholder="Title Here..." required>
                             </div>
                             <div class="form-group">
                                 <label for="sub_title">Sub Title</label>
@@ -61,11 +64,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Client Email</label>
-                                <input type="email" class="form-control" value="<?php echo $cleint_email;?>" name="client_email" id="client_email" placeholder="Client Email" required>
+                                <input type="email" class="form-control" value="<?php echo $client_email;?>" name="client_email" id="client_email" placeholder="Client Email" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Client Phone</label>
-                                <input type="tel" class="form-control" value="<?php echo $cleint_phone;?>" name="client_phone" id="client_phone" placeholder="Client Phone" required>
+                                <input type="tel" class="form-control" value="<?php echo $client_phone;?>" name="client_phone" id="client_phone" placeholder="Client Phone" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Product Category</label>
@@ -83,7 +86,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="ex_link">External Link(Optional)</label>
-                                <input type="text" class="form-control" value="<?php echo $ex_link;?>" name="ex_link" id="ex_link" placeholder="https://bit.ly/RQse2ht..." required>
+                                <input type="text" class="form-control" value="<?php echo $ex_link;?>" name="ex_link" id="ex_link" placeholder="https://bit.ly/RQse2ht...">
                             </div>
                             <div class="form-group">
                                 <label for="about">About Product</label>
@@ -99,7 +102,7 @@
                                     <label class="form-check-label" for="publish">Mark as Activie</label>
                                 </div>
                             </div>
-                            <button type="submit" name="Update-product" class="btn  btn-primary">update Product</button>
+                            <button type="submit" name="update-product" class="btn  btn-primary">update Product</button>
                         </form>
                     </div>
                 </div>

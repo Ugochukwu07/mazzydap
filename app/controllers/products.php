@@ -24,6 +24,19 @@ if(isset($_GET['token'])){
     $category = selectOne($table2, ['id' => $product['cat_id']]);
 }
 
+if(isset($_GET['p_u_id'])){
+    $product =selectOne($table, ['id' => $_GET['p_u_id']]);
+    $titlem = $product['title'];
+    $sub_title = $product['sub_title'];
+    $client_name = $product['client_name'];
+    $client_email = $product['client_email'];
+    $client_phone = $product['client_phone'];
+    $ex_link = $product['ex_link'];
+    $about = $product['about'];
+    $publish = isset($product['publish']) ? 1 : 0;
+    $cat_id = $product['cat_id'];
+}
+
 if(isset($_POST['add-product'])){
     $genErrors = upload('/assets/dashboard/images/products/', XIMAGE, 'thumb_image');
     if(count($genErrors[0]) === 0){
@@ -38,6 +51,35 @@ if(isset($_POST['add-product'])){
             header('location:' . BASE_URL . '/dashboard/products/');
             exit();
         }
+    }else{
+        $titlem = $_POST['title'];
+        $sub_title = $_POST['sub_title'];
+        $client_name = $_POST['client_name'];
+        $client_email = $_POST['client_email'];
+        $client_phone = $_POST['client_phone'];
+        $ex_link = $_POST['ex_link'];
+        $about = $_POST['about'];
+        $publish = isset($_POST['publish']) ? 1 : 0;
+        $cat_id = $_POST['cat_id'];
+    }
+}
+
+if(isset($_POST['update-product'])){
+    if (!empty($_FILES['thumb_image']['name'])) {
+        $genErrors = upload('/assets/dashboard/images/products/', XIMAGE, 'thumb_image');
+    }else{
+        $genErrors[0] = array();
+    }
+    if(count($genErrors[0]) === 0){
+        $id = $_POST['id'];
+        $_POST['user_id'] = $xUser['id'];
+        $_POST['publish'] = isset($_POST['publish']) ? 1 : 0;
+        unset($_POST['update-product'], $_POST['id']);
+        $product_id = update($table, $id, $_POST);dd($product_id);
+            $_SESSION['message'] = 'Category Updated Successfully';
+            $_SESSION['type'] = 'success';
+            header('location:' . BASE_URL . '/dashboard/products/');
+            exit();
     }else{
         $titlem = $_POST['title'];
         $sub_title = $_POST['sub_title'];

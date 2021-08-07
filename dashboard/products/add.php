@@ -65,7 +65,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Client Phone</label>
-                                <input type="tel" class="form-control" value="<?php echo $client_phone;?>" required name="client_phone" id="client_phone" placeholder="Client Phone">
+                                <input type="tel" class="form-control" value="<?php echo $client_phone;?>" name="client_phone" id="client_phone" placeholder="Client Phone">
                             </div>
                             <div class="form-group">
                                 <label for="client_name">Product Category</label>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="ex_link">External Link(Optional)</label>
-                                <input type="text" class="form-control" value="<?php echo $ex_link;?>" required name="ex_link" id="ex_link" placeholder="https://bit.ly/RQse2ht...">
+                                <input type="text" class="form-control" value="<?php echo $ex_link;?>" name="ex_link" id="ex_link" placeholder="https://bit.ly/RQse2ht...">
                             </div>
                             <div class="form-group">
                                 <label for="about">About Product</label>

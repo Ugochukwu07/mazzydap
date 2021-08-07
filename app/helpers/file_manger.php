@@ -56,7 +56,7 @@ function upload($destination, $fileType, $fileName){
         //array_push($ierror, 'File Required');
         $ierrors['empty'] = 'File Required';
         $ierrors['failed'] = '';
-        $ierrors['type'] = '';\
+        $ierrors['type'] = '';
         array_push($ierror, 'Xfile');
     }
     $gen = array($ierror, $ierrors);
@@ -115,8 +115,7 @@ function updateFile($destination, $fileType, $FileName){
         }
         
     }else{
-        array_push($ierror, 'File Required');
-        $ierrors['empty'] = 'File Required';
+        $ierrors['empty'] = '';
         $ierrors['failed'] = '';
         $ierrors['type'] = '';
     }
