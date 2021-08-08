@@ -54,7 +54,7 @@
                                     <?php endforeach;?>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a class="btn btn-success" href="<?php echo BASE_URL . '/work-details/' . $product['token']; ?>">View As User</a>
+                                    <a class="btn btn-success" href="<?php echo BASE_URL . '/design/' . $product['token']; ?>">View As User</a>
                                     <a class="btn btn-primary" href="<?php echo BASE_URL . '/dashboard/products/update.php?p_id=' . $product['id']; ?>">Edit</a>
                                     <a class="btn btn-danger" href="<?php echo BASE_URL . '/dashboard/products/?p_del_id=' . $product['id']; ?>">Delete</a>
                                 </div>

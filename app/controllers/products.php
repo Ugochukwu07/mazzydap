@@ -14,6 +14,8 @@ $errors['failed'] = $errors['type'] = '';
 
 #vars
 $products = selectAll($table);
+$categories = selectAll($table2);
+$files = selectAll($table3);
 
 if(isset($_GET['id'])){
     $product = selectOne($table, ['id' => $_GET['id']]);
@@ -48,10 +50,11 @@ if(isset($_GET['p_id'])){
     }
 }
 
-/* if(isset($_GET['p_del_id'])){
-    header('location:' BASE_URL . '/dashboard/promt.php?t=' . $table . '&id=' . $_GET['p_del_id'] . '&a=del');
+if(isset($_GET['p_del_id'])){
+    $_SESSION['link'] = '/dashboard/products/';
+    header('location: ' . BASE_URL . '/dashboard/promt.php?t=' . $table . '&id=' . $_GET['p_del_id'] . '&a=del');
     exit();
-} */
+}
 
 if(isset($_POST['add-product'])){
     $genErrors = upload('/assets/dashboard/images/products/', XIMAGE, 'thumb_image');

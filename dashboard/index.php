@@ -33,6 +33,7 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="row">
+        <?php include(ROOT_PATH . '/app/includes/message.php'); ?>
             <!-- support-section start -->
             <div class="col-xl-6 col-md-12">
                 <div class="card flat-card">

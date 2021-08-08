@@ -1,8 +1,8 @@
 <?php 
 	include('../../path.php');
-	include(ROOT_PATH . '/app/controllers/products.php');
+	include(ROOT_PATH . '/app/controllers/users.php');
 
-	$title = "All";
+	$title = "Add";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,7 @@
                             <h5 class="m-b-10"><?php echo $title; ?></h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Products</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Users</a></li>
                             <li class="breadcrumb-item"><?php echo $title; ?></li>
                         </ul>
                     </div>
@@ -34,43 +34,42 @@
         <!-- [ Main Content ] start -->
         <div class="row">
         <?php include(ROOT_PATH . '/app/includes/message.php'); ?>
-            <div class="col-12 col-md-12 col-lg-12 mx-auto">
+            <div class="col-12 col-md-10 col-lg-9 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mt-5">All Your Products</h5>
+                        <h5 class="mt-5">Add Your Product Categories</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table table-striped table-responsive">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Token</th>
-                              <th>Title</th>
-                              <th>Category</th>
-                              <th>Date</th>
-                              <th colspan="4">Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                                <?php foreach($products as $product):?>
-                                    <tr>
-                                        <td><?php echo $product['id'] + 1;?></td>
-                                        <td><?php echo $product['token'];?></td>
-                                        <td><?php echo $product['title'];?></td>
-                                        <td><?php $cat = selectOne($table2, ['id' => $product['cat_id']]);?><a href="<?php echo BASE_URL . '/dashboard/categories/?id=' . $cat['id'];?>" class='text-primary' ><?php echo $cat['name'];?></a></td>
-                                        <td><?php echo date('F j, Y h:i:s', strtotime($product['created_at'])); ?></td>
-                                        <td><a href="<?php echo BASE_URL . '/dashboard/products/view.php?id=' . $product['id']; ?>">View</a></td>
-                                        <td><a class="text-info" href="<?php echo BASE_URL . '/dashboard/products/update.php?p_u_id=' . $product['id']; ?>">Update</a></td>
-                                        <?php if($product['publish']):?>
-                                            <td><a class="text-warning" href="<?php echo BASE_URL . '/dashboard/products/?p_id=' . $product['id'] . '&a=unpublish'; ?>">Unpublish</a></td>
-                                        <?php else:?>
-                                            <td><a class="text-success" href="<?php echo BASE_URL . '/dashboard/products/?p_id=' . $product['id']; ?>">Publish</a></td>
-                                        <?php endif;?>
-                                        <td><a class="text-danger" href="<?php echo BASE_URL . '/dashboard/products/?p_del_id=' . $product['id']; ?>">Delete</a></td>
-                                    </tr>
-                                <?php endforeach;?>
-                          </tbody>
-                        </table>
+                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="was-validated" enctype="multipart/form-data">
+                            <!-- <div class="custom-file form-group mb-2">
+                                <input type="file" class="custom-file-input" id="image" required name="image">
+                                <label class="custom-file-label" for="image">Choose file...</label>
+                            </div>
+                            <small class="badge badge-light-danger "><?php echo $errors['failed']; ?></small>
+                            <small class="badge badge-light-danger "><?php echo $errors['type']; ?></small>
+                            <small class="badge badge-light-danger "><?php echo $errors['empty']; ?></small> -->
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name="username" value="<?php echo $username;?>" id="username" placeholder="Userame Here..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" value="<?php echo $email;?>" id="email" placeholder="Email Here..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" class="form-control" name="phone" value="<?php echo $phone;?>" id="phone" placeholder="Phone Number Here..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" value="<?php echo $password;?>" id="password" placeholder="Password Here..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cpassword">Confirm Password</label>
+                                <input type="password" class="form-control" name="cpassword" value="<?php echo $cpassword;?>" id="cpassword" placeholder="Password Here..." required>
+                            </div>
+                            <button type="submit" name="add-user" class="btn  btn-primary">Add User</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php 
 	include('../../path.php');
-	include(ROOT_PATH . '/app/controllers/products.php');
+	include(ROOT_PATH . '/app/controllers/users.php');
 
 	$title = "All";
 ?>
@@ -23,7 +23,7 @@
                             <h5 class="m-b-10"><?php echo $title; ?></h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Products</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Users</a></li>
                             <li class="breadcrumb-item"><?php echo $title; ?></li>
                         </ul>
                     </div>
@@ -37,36 +37,33 @@
             <div class="col-12 col-md-12 col-lg-12 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mt-5">All Your Products</h5>
+                        <h5 class="mt-5">All Users</h5>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped table-responsive">
                           <thead>
                             <tr>
                               <th>ID</th>
-                              <th>Token</th>
-                              <th>Title</th>
-                              <th>Category</th>
+                              <th>Username</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                              <th>Status</th>
                               <th>Date</th>
-                              <th colspan="4">Action</th>
+                              <th colspan="2">Actions</th>
                             </tr>
                           </thead>
                           <tbody>
-                                <?php foreach($products as $product):?>
+                                <?php foreach($users as $user):?>
                                     <tr>
-                                        <td><?php echo $product['id'] + 1;?></td>
-                                        <td><?php echo $product['token'];?></td>
-                                        <td><?php echo $product['title'];?></td>
-                                        <td><?php $cat = selectOne($table2, ['id' => $product['cat_id']]);?><a href="<?php echo BASE_URL . '/dashboard/categories/?id=' . $cat['id'];?>" class='text-primary' ><?php echo $cat['name'];?></a></td>
-                                        <td><?php echo date('F j, Y h:i:s', strtotime($product['created_at'])); ?></td>
-                                        <td><a href="<?php echo BASE_URL . '/dashboard/products/view.php?id=' . $product['id']; ?>">View</a></td>
-                                        <td><a class="text-info" href="<?php echo BASE_URL . '/dashboard/products/update.php?p_u_id=' . $product['id']; ?>">Update</a></td>
-                                        <?php if($product['publish']):?>
-                                            <td><a class="text-warning" href="<?php echo BASE_URL . '/dashboard/products/?p_id=' . $product['id'] . '&a=unpublish'; ?>">Unpublish</a></td>
-                                        <?php else:?>
-                                            <td><a class="text-success" href="<?php echo BASE_URL . '/dashboard/products/?p_id=' . $product['id']; ?>">Publish</a></td>
-                                        <?php endif;?>
-                                        <td><a class="text-danger" href="<?php echo BASE_URL . '/dashboard/products/?p_del_id=' . $product['id']; ?>">Delete</a></td>
+                                        <td><?php echo $user['id'] + 1;?></td>
+                                        <td><?php echo $user['username'];?></td>
+                                        <td><?php echo $user['email'];?></td>
+                                        <td><?php echo $user['phone'];?></td>
+                                        <td><?php if($user['status']){echo 'Admin';}else{echo 'User';}?></td>
+                                        <td><?php echo date('F j, Y h:i:s', strtotime($user['created_at'])); ?></td>
+                                        <td><a href="<?php echo BASE_URL . '/dashboard/users/view.php?id=' . $user['id']; ?>">View</a></td>
+                                        <!-- <td><a class="text-info" href="<?php echo BASE_URL . '/dashboard/users/?u_u_id=' . $user['id']; ?>">Update</a></td> -->
+                                        <td><a class="text-danger" href="<?php echo BASE_URL . '/dashboard/users/?u_del_id=' . $user['id']; ?>">Delete</a></td>
                                     </tr>
                                 <?php endforeach;?>
                           </tbody>

@@ -1,5 +1,6 @@
 <?php 
 include('path.php');
+include(ROOT_PATH . '/app/controllers/products.php');
 
 $title = 'Our Portfolio';
 ?>
@@ -19,8 +20,8 @@ $title = 'Our Portfolio';
             <div class="bread-inner">
               <div class="bread-menu">
                 <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="#">Portfolio</a></li>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="#">Projects</a></li>
                 </ul>
               </div>
               <div class="bread-title">
@@ -40,16 +41,16 @@ $title = 'Our Portfolio';
         <div class="col-lg-6">
           <div class="common-heading pp">
             <span>Our Work</span>
-            <h2>Portfolio</h2>
+            <h2>Projects</h2>
           </div>
         </div>
         <div class="col-lg-6 v-center">
           <div class="filters">
             <ul class="filter-menu">
               <li data-filter="*" class="is-checked">All</li>
-              <li data-filter=".website">Website</li>
-              <li data-filter=".app">Mobile App</li>
-              <li data-filter=".graphic">Graphic</li>
+              <?php foreach($categories as $cat):?>
+                <li data-filter=".<?php echo $cat['name']; ?>"><?php echo $cat['name']; ?></li>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
@@ -103,27 +104,27 @@ $title = 'Our Portfolio';
         </div>
       </div>
     </div>
-  <div class="col-lg-4 col-sm-4 mt40 single-card-item app graphic">
-  <div class="isotope_item up-hor">
-  <div class="item-image">
-  <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/app-img3.jpg" alt="image" class="img-fluid" /> </a>
-  </div>
-  <div class="item-info-div shdo">
-  <h4><a href="#">Event Management App</a></h4>
-  <p>Graphic, Print</p>
-  </div>
-  </div>
-  </div>
-  <div class="col-lg-4 col-sm-4 mt40 single-card-item app">
-  <div class="isotope_item up-hor">
-  <div class="item-image">
-  <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/app-img4.jpg" alt="image" class="img-fluid" /> </a>
-  </div>
-  <div class="item-info-div shdo">
-  <h4><a href="#">Restaurant App</a></h4>
-  <p>iOs, Android</p>
-  </div>
-  </div>
+    <div class="col-lg-4 col-sm-4 mt40 single-card-item app graphic">
+      <div class="isotope_item up-hor">
+        <div class="item-image">
+          <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/app-img3.jpg" alt="image" class="img-fluid" /> </a>
+        </div>
+        <div class="item-info-div shdo">
+          <h4><a href="#">Event Management App</a></h4>
+          <p>Graphic, Print</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-4 mt40 single-card-item app">
+      <div class="isotope_item up-hor">
+        <div class="item-image">
+          <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/app-img4.jpg" alt="image" class="img-fluid" /> </a>
+        </div>
+      <div class="item-info-div shdo">
+        <h4><a href="#">Restaurant App</a></h4>
+        <p>iOs, Android</p>
+      </div>
+    </div>
   </div>
   <div class="col-lg-4 col-sm-4 mt40 single-card-item graphic website">
   <div class="isotope_item up-hor">

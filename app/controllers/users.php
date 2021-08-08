@@ -18,6 +18,8 @@ $errors['img'] = $errors['euimg'] = $errors['unr1'] = '';
 
 $table = 'users';
 
+$users = selectAll($table);
+
 
 /*
 if(isset($_GET['del_u_id'])){

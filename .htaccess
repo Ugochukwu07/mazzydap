@@ -18,7 +18,7 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.php -f
-ReWriteRule ^work-details/([0-9a-zA-Z]+) work-details.php?token=$1 [NC,L]
+ReWriteRule ^design/([0-9a-zA-Z]+) design.php?token=$1 [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

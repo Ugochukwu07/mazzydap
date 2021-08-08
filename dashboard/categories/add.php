@@ -33,6 +33,7 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="row">
+        <?php include(ROOT_PATH . '/app/includes/message.php'); ?>
             <div class="col-12 col-md-10 col-lg-9 mx-auto">
                 <div class="card">
                     <div class="card-header">
