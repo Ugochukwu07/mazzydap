@@ -1,6 +1,9 @@
 <?php 
 include('path.php');
 include(ROOT_PATH . '/app/controllers/products.php');
+if(!isset($_GET['token'])){
+  setMsg('Please Select a Design', 'warning', '/works');
+}
 
 $title = $product['title'];
 ?>

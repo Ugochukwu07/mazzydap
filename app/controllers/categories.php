@@ -10,7 +10,7 @@ $table = 'category';
 
 #errors
 $errors = $error = array();
-$errors['name'] = $errors['body'] = $errors['failed'] = $errors['type'] = '';
+$errors['name'] = $errors['body'] = $errors['failed'] = $errors['type'] = $errors['empty'] = '';
 
 #values
 $name = $body = '';

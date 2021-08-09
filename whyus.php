@@ -11,7 +11,7 @@ $title = 'Why Us';
 <body class="active-dark">
     <?php include(ROOT_PATH . '/app/includes/header_open.php'); ?>
 <!--Breadcrumb Area-->
-<section class="breadcrumb-area banner-2">
+<section class="breadcrumb-area banner-2" data-background="images/hero/why.jpg" style="background-position: center; background-size: cover; background-attachment: fixed;">
 <div class="text-block">
 <div class="container">
 <div class="row">
@@ -19,7 +19,7 @@ $title = 'Why Us';
 <div class="bread-inner">
 <div class="bread-menu">
 <ul>
-<li><a href="index.html">Home</a></li>
+<li><a href="/">Home</a></li>
 <li><a href="#">Why Us</a></li>
 </ul>
 </div>

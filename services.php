@@ -1,5 +1,6 @@
 <?php 
 include('path.php');
+include(ROOT_PATH . '/app/controllers/products.php');
 
 $title = 'Details';
 ?>
@@ -11,7 +12,7 @@ $title = 'Details';
 <body class="active-dark">
     <?php include(ROOT_PATH . '/app/includes/header_open.php'); ?>
 <!--Breadcrumb Area-->
-<section class="breadcrumb-areav2" data-background="<?php echo BASE_URL . '/assets/open/images/'; ?>banner/4.jpg">
+<section class="breadcrumb-areav2" data-background="images/hero/ser.jpg" style="background-position: center; background-size: cover; background-attachment: fixed;">
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-lg-7">
@@ -435,72 +436,21 @@ $title = 'Details';
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay=".2s">
+      <?php $product = selectAll($table, ['publish' => 1]); ?>
+      <?php for($i=0; $i < 7; $i++):?>
+        <?php $cat = selectOne($table2, ['id' => $product[$i]['cat_id']]);?>
+        <div class="col-lg-4 wow fadeInUp" data-wow-delay=".<?php echo ($i + 1)*2?>s">
           <div class="isotope_item hover-scale">
             <div class="item-image">
-              <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-1.jpg" alt="portfolio" class="img-fluid"/> </a>
+              <a href="<?php echo BASE_URL . '/design/' . $product[$i]['token']; ?>"><img src="<?php echo BASE_URL . '/assets/dashboard/images/products/' . $product[$i]['thumb_image']; ?>" alt="portfolio" class="img-fluid"/> </a>
             </div>
             <div class="item-info">
-              <h4><a href="#">Creative </a></h4>
-              <p>ios, design</p>
+              <h4><a href="<?php echo BASE_URL . '/design/' . $product[$i]['token']; ?>"><?php echo $product[$i]['title']; ?> </a></h4>
+              <p><?php echo $cat['name']; ?></p>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay=".4s">
-          <div class="isotope_item hover-scale">
-            <div class="item-image">
-              <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-2.jpg" alt="portfolio" class="img-fluid"/> </a>
-            </div>
-            <div class="item-info">
-              <h4><a href="#">Brochure Design</a></h4>
-              <p>Graphic, Print</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay=".6s">
-          <div class="isotope_item hover-scale">
-            <div class="item-image">
-              <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-3.jpg" alt="portfolio" class="img-fluid"/> </a>
-            </div>
-            <div class="item-info">
-              <h4><a href="#">Ecommerce Development</a></h4>
-              <p>Web application</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay=".8s">
-          <div class="isotope_item hover-scale">
-            <div class="item-image">
-              <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-4.jpg" alt="portfolio" class="img-fluid"/> </a>
-            </div>
-            <div class="item-info">
-              <h4><a href="#">Icon Pack</a></h4>
-              <p>Android & iOs, Design</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="1s">
-          <div class="isotope_item hover-scale">
-            <div class="item-image">
-              <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-5.jpg" alt="portfolio" class="img-fluid"/> </a>
-            </div>
-            <div class="item-info">
-              <h4><a href="#">Smart Watch</a></h4>
-              <p>UI/UX Design</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 wow fadeInUp" data-wow-delay="1.2s">
-          <div class="isotope_item hover-scale">
-            <div class="item-image">
-              <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-6.jpg" alt="portfolio" class="img-fluid"/> </a>
-            </div>
-            <div class="item-info">
-              <h4><a href="#">Brochure Design</a></h4>
-              <p>Graphic, Print</p>
-            </div>
-          </div>
-        </div>
+      <?php endfor;?>
       </div>
       <div class="row">
         <div class="col-lg-12 maga-btn mt60">

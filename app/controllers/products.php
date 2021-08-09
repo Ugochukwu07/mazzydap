@@ -25,6 +25,9 @@ if(isset($_GET['id'])){
 if(isset($_GET['token'])){
     $product = selectOne($table, ['token' => $_GET['token']]);
     $category = selectOne($table2, ['id' => $product['cat_id']]);
+    if(!$product){
+        setMsg('Invalid Desgin Token', 'danger', '/works');
+    }
 }
 
 if(isset($_GET['p_u_id'])){

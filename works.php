@@ -12,7 +12,7 @@ $title = 'Our Portfolio';
 <body class="active-dark">
     <?php include(ROOT_PATH . '/app/includes/header_open.php'); ?>
   <!--Breadcrumb Area-->
-  <section class="breadcrumb-area banner-3">
+  <section class="breadcrumb-area banner-3" data-background="images/hero/projects.jpg" style="background-position: center; background-size: cover; background-attachment: fixed;">
     <div class="text-block">
       <div class="container">
         <div class="row">
@@ -38,13 +38,14 @@ $title = 'Our Portfolio';
   <section class="portfolio-page pad-tb">
     <div class="container">
       <div class="row justify-content-left">
-        <div class="col-lg-6">
+				<?php include(ROOT_PATH . '/app/includes/message.php'); ?>
+        <div class="col-lg-4">
           <div class="common-heading pp">
             <span>Our Work</span>
             <h2>Projects</h2>
           </div>
         </div>
-        <div class="col-lg-6 v-center">
+        <div class="col-lg-8 v-center">
           <div class="filters">
             <ul class="filter-menu">
               <li data-filter="*" class="is-checked">All</li>
@@ -56,7 +57,7 @@ $title = 'Our Portfolio';
         </div>
       </div>
       <div class="row card-list">
-        <div class="col-lg-4 col-md-6 grid-sizer"></div>
+        <div class="col-lg-4 col-md-6 grid-sizer"></div><?php $products = selectAll($table, ['publish' => 1]); ?>
         <?php foreach($products as $product): ?>
           <?php $cat = selectOne($table2, ['id' => $product['cat_id']]); ?>
           <div class="col-lg-4 col-sm-4 mt40 single-card-item <?php echo str_replace(' ', '', $cat['name']); ?>">

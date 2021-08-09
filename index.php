@@ -33,66 +33,19 @@ $title = 'Home';
                     <div class="hero-right-scmm">
                         <div class="hero-service-cards wow fadeInRight" data-wow-duration="2s">
                             <div class="owl-carousel service-card-prb">
-                                <div class="service-slide card-bg-a" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                                    <a href="#">
-                                        <div class="service-card-hh">
-                                            <div class="image-sr-mm">
-                                                <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/open/images/'; ?>service/vr.png">
+                                <?php $categories = selectAll('category'); $bg = str_split('abcdef');?>
+                                <?php foreach($categories as $cat):?>
+                                    <div class="service-slide card-bg-<?php echo $bg[array_rand($bg, 1)];?>" data-tilt data-tilt-max="5" data-tilt-speed="1000">
+                                        <a href="<?php echo BASE_URL . '/works'?>">
+                                            <div class="service-card-hh">
+                                                <div class="image-sr-mm">
+                                                    <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/dashboard/images/categories/' . $cat['image']; ?>">
+                                                </div>
+                                                <div class="title-serv-c"><?php echo $cat['name']; ?> Works</div>
                                             </div>
-                                            <div class="title-serv-c"><span>Oil</span> Paint Works</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="service-slide card-bg-b" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                                    <a href="#">
-                                        <div class="service-card-hh">
-                                            <div class="image-sr-mm">
-                                                <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/open/images/'; ?>service/app-develop.png">
-                                            </div>
-                                            <div class="title-serv-c"><span>Custom</span> Logo Solution</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="service-slide card-bg-c" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                                    <a href="#">
-                                        <div class="service-card-hh">
-                                            <div class="image-sr-mm">
-                                                <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/open/images/'; ?>service/startup.png">
-                                            </div>
-                                            <div class="title-serv-c"><span>Business</span> Branding</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="service-slide card-bg-d" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                                    <a href="#">
-                                        <div class="service-card-hh">
-                                            <div class="image-sr-mm">
-                                                <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/open/images/'; ?>service/car-rental.png">
-                                            </div>
-                                            <div class="title-serv-c"><span>Digital</span> Art Skechting</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="service-slide card-bg-e" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                                    <a href="#">
-                                        <div class="service-card-hh">
-                                            <div class="image-sr-mm">
-                                                <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/open/images/'; ?>service/marketing.png">
-                                            </div>
-                                            <div class="title-serv-c"><span>Marketing</span> Solution</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="service-slide card-bg-f" data-tilt data-tilt-max="5" data-tilt-speed="1000">
-                                    <a href="#">
-                                        <div class="service-card-hh">
-                                            <div class="image-sr-mm">
-                                                <img alt="custom-sport" src="<?php echo BASE_URL . '/assets/open/images/'; ?>service/ewallet.png">
-                                            </div>
-                                            <div class="title-serv-c"><span>e-Wallet</span> Solution</div>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

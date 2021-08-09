@@ -396,7 +396,7 @@ File Description: Main JS file of the template*/
 
   // background image
   $("[data-background]").each(function () {
-    $(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
+    $(this).css("background-image", "url(assets/open/" + $(this).attr("data-background") + ")")
   })
 
 

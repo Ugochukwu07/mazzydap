@@ -12,7 +12,7 @@ $title = 'About Us';
     <?php include(ROOT_PATH . '/app/includes/header_open.php'); ?>
 
   <!--Breadcrumb Area-->
-  <section class="breadcrumb-area banner-1" data-background="images/banner/9.jpg">
+  <section class="breadcrumb-area banner-1" data-background="images/hero/about.jpg" style="background-position: center; background-size: cover; background-attachment: fixed;">
     <div class="text-block">
       <div class="container">
         <div class="row">

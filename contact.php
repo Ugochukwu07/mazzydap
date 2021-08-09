@@ -11,7 +11,7 @@ $title = 'Get A Quote';
 <body class="active-dark">
     <?php include(ROOT_PATH . '/app/includes/header_open.php'); ?>
 		<!--Breadcrumb Area-->
-		<section class="breadcrumb-area banner-6">
+		<section class="breadcrumb-area banner-6" data-background="images/hero/why.jpg" style="background-position: center; background-size: cover; background-attachment: fixed;">
 			<div class="text-block">
 				<div class="container">
 					<div class="row">
