@@ -21,9 +21,6 @@ function adminOnly(){
     if (empty($_SESSION['id'])){
         setMsg('Please Sign in', 'danger', '/signin');
     }
-    if(!empty($_SESSION['id'] && $xUser['status'] != 1)){
-        setMsg('You are not Authorized', 'danger', '/');
-    }
 }
 
 ?>
