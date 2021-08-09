@@ -9,7 +9,7 @@ $reuseables = array(
                                         'bottom' => '</main> <footer>     <div>         <a href="https://mazzydap.com/works">Designs</a> | <a href="https://mazzydap.com/contact">Support</a> | <a href="https://mazzydap.com/about">Offices</a>     </div>     <div>         support@mazzydap.com / ticket@mazzydap.com / info@mazzydap.com <br> +123455678     </div> </footer></body></html>'
                                     ),
                     "MUSER" => 'support@mazzydap.com',
-                    "MPASS" => 'MazzyDap12',
+                    "MPASS" => 'MazzyDap_12',
                     "MFROM" => 'MazzyDap',
                     "MHOST" => 'mazzydap.com',
                     "MCC" => 'support@mazzydap.com'
