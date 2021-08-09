@@ -27,7 +27,7 @@ if(isset($_GET['cat_id'])){
 }
 
 if(isset($_GET['cat_del_id'])){
-    $_SESSION['link'] = '/dashboard/categories/'
+    $_SESSION['link'] = '/dashboard/categories/';
     header('location: ' . BASE_URL . '/dashboard/promt.php?t=' . $table . '&id=' . $_GET['c_del_id'] . '&a=del');
     exit();
 }
