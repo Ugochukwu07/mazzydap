@@ -8,10 +8,10 @@ foreach($fileName as $key => $value){
 }
 ?>
 
-.logo-pre {
-    background: #000000;
-}
+    .logo-pre {
+        background: #000000;
+    }
 
-.active-dark .nav-bg-b.main-header .mega-white-logo {
-    width: 130px;
-}
+    .active-dark .nav-bg-b.main-header .mega-white-logo {
+        width: 130px;
+    }

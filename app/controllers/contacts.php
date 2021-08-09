@@ -13,7 +13,7 @@ $errors['subject'] = $errors['firstname'] = $errors['lastname'] = $errors['phone
 $subject = $firstname = $lastname = $phone = $email = $message = '';
 
 #tables
-$table = 'contacts';
+$table = 'contact';
 
 #User contact
 if(isset($_POST['contact-user'])){
@@ -78,12 +78,28 @@ if(isset($_POST['re-contact'])){
 }
 
 #submit
-if(isset($_POST['contact'])){
-    $_POST['user'] = 0;
-    $_POST['ref_id'] = generateRandomString($user_key, 11);
-    unset($_POST['contact']);
-    $message = create('contacts', $_POST);
-    $_SESSION['message'] = 'Admin Contacted Successfully! Your Reference ID: <code>' . $_POST['ref_id'] . '</code><br>You can get started by clicking the button below<br><a href="./auth-signup.php" class="btn btn-primary">Get Started</a>';
+if(isset($_POST['form-submit'])){
+    $_POST['token'] = generateRandomString($token, 5);
+    unset($_POST['form-submit']);
+    $message = create($table, $_POST);
+    $template_file = 'app/lib/openContact.php';
+    $swap_var = array(
+        "#fullName#" => $_POST['fullName'],
+        "{EMAIL_TITLE}" => "Ticket From Mazzy Dap",
+        "{TO_EMAIL}" => $_POST['email'],
+        "#email#" => $_POST['email'],
+        "#message#" => $_POST['message'],
+        "#requirements#" => $_POST['requirements'],
+        "#token#" => $_POST['token'],
+        "#phone#" => $_POST['phone'],
+        "#BASE_URL#" => BASE_URL,
+        'TOP' => XMAIL['top'],
+        'BOTTOM' => XMAIL['bottom']
+    );
+    mailing($template_file, $swap_var);
+    $swap_var["{TO_EMAIL}"] = MCC;
+    mailing($template_file, $swap_var);
+    $_SESSION['message'] = 'Admin Contacted Successfully! Your Reference ID: <code>' . $_POST['token'] . '</code>';
     $_SESSION['type'] = 'success';
 }
 

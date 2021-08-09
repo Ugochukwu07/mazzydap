@@ -1,6 +1,7 @@
 <?php 
 include(ROOT_PATH . '/app/database/db.php');
 include(ROOT_PATH . '/app/helpers/file_manger.php');
+include(ROOT_PATH . '/app/helpers/middleware.php');
 include(ROOT_PATH . '/app/helpers/validate.php');
 include(ROOT_PATH . '/app/helpers/paging.php');
 include(ROOT_PATH . '/app/helpers/math.php');
@@ -17,6 +18,7 @@ $name = $body = '';
 $categories = selectAll($table);
 
 if(isset($_GET['cat_id'])){
+    adminOnly();
     $category = selectOne($table, ['id' => $_GET['cat_id']]);
     $name = $category['name'];
     $body = $category['body'];
@@ -32,6 +34,7 @@ if(isset($_GET['cat_del_id'])){
 
 
 if(isset($_POST['add-category'])){
+    adminOnly();
     $genErrors = categoryVal($_POST);
     $errors = $genErrors[0]; $error = $genErrors[1];
     $genErrors = upload('/assets/dashboard/images/categories/', XIMAGE, 'image');
@@ -55,6 +58,7 @@ if(isset($_POST['add-category'])){
 
 
 if(isset($_POST['update-category'])){
+    adminOnly();
     $genErrors = categoryVal($_POST);
     $errors = $genErrors[0]; $error = $genErrors[1];
     if(!empty($_FILES['image']['name'])){

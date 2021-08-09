@@ -1,6 +1,5 @@
 <?php 
 include(ROOT_PATH . '/app/database/db.php');
-include(ROOT_PATH .  '/app/helpers/funds.php');
 include(ROOT_PATH .  '/app/helpers/math.php');
 include(ROOT_PATH .  '/app/helpers/mailer.php');
 include(ROOT_PATH .  '/app/helpers/middleware.php');
@@ -8,7 +7,7 @@ include(ROOT_PATH .  '/app/helpers/paging.php');
 include(ROOT_PATH .  '/app/helpers/validate.php');
 $errors = array();
 $error = array();
-$firstname = $lastname = $username = $password = $cpassword = $email = "";
+$firstname = $lastname = $username = $password = $cpassword = $email = $phone = $status = "";
 /* Errors Variables */
 $errors['ef'] = $errors['el'] = $errors['eme'] = $errors['emei'] = '';
 $errors['unr'] = $errors['pr'] = $errors['pri'] = $errors['psl'] = '';
@@ -20,74 +19,11 @@ $table = 'users';
 
 $users = selectAll($table);
 
-
-/*
-if(isset($_GET['del_u_id'])){
-    delete($table, $_GET['del_u_id']);
-    header('location:' . BASE_URL . '/');
-    exit();
-}
-
-if(isset($_GET['del_au_id'])){
-    adminOnly();
-    delete($table, $_GET['del_au_id']);
-    $_SESSION['message'] = 'User deleted successfully';
-    $_SESSION['type'] = 'success';
-    header('location:' . BASE_URL . '/dashboard/admin/');
-    exit();
-} */
-
 #functions
-
-if(isset($_GET['del_u_id']) || isset($_GET['del_au_id'])){
-    $user_id = isset($_GET['del_au_id']) ? $_GET['del_au_id'] : $_GET['del_u_id'];
-    #transactions
-    $transactions = selectAll('transactions', ['user_id' => $user_id]);
-    if(!empty($transactions)){
-        foreach($transactions as $transaction){
-            delete('transactions', $transaction['id']);
-        }
-    }
-    #feeds
-    $feeds = selectAll('feeds', ['user_id' => $user_id]);
-    if (!empty($feeds)) {
-        foreach ($feeds as $feed) {
-            delete('feeds', $feed['id']);
-        }
-    }
-    #contacts
-    $contacts = selectAll('contacts', ['user' => $user_id]);
-    if(!empty($contacts)){
-        foreach($contacts as $contact){
-            delete('contacts', $contact['id']);
-        }
-    }
-    #codes
-    $codes = selectAll('codes', ['user_id' => $user_id]);
-    delete('codes', $code['id']);
-
-    #currentInvestments
-    $funds = selectAll('funds', ['user_id' => $user_id]);
-    if (!empty($funds)) {
-      foreach($funds as $fund){
-            delete('funds', $fund['id']);
-        }
-    }
-
-    #users
-    delete($table, $user_id);
-
-    #redirect
-    if(isset($_GET['del_au_id'])){
-        adminOnly();
-        $_SESSION['message'] = 'User Deleted Successfully';
-        $_SESSION['type'] = 'success';
-        header('location:' . BASE_URL . '/dashboard/admin/users/all.php');
-        exit();
-    }else{
-        header('location:' . BASE_URL . '/');
-        exit();
-    }
+if(isset($_GET['u_del_id'])){
+    $_SESSION['link'] = '/dashboard/users/';
+    header('location: ' . BASE_URL . '/dashboard/promt.php?t=' . $table . '&id=' . $_GET['u_del_id'] . '&a=del');
+    exit();
 }
 
 #email Verify
@@ -123,30 +59,19 @@ function loginUser($user) {
 }
 
 #signup
-if (isset($_POST['signup']) || isset($_POST['adminAdd'])) {
+if (isset($_POST['signup']) || isset($_POST['add-user'])) {
     $genErrors = userVal($_POST);
     $errors = $genErrors[0];
     $subMainError = $genErrors[1];
     if(count($subMainError) === 0){
         unset($_POST['cpassword']);
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $_POST['image'] = 'male-avatar.svg';
-        if(isset($_POST['adminAdd'])){
-            unset($_POST['adminAdd']);
-            $_POST['admin'] = isset($_POST['checkbox1']) ? 1 : 0;
-            unset($_POST['checkbox1']);
-            $_POST['emailVerified'] = 1;
+        if(isset($_POST['add-user'])){
+            adminOnly();
+            unset($_POST['add-user']);
+            $_POST['status'] = isset($_POST['status']) ? 1 : 0;
             $user_id = create($table, $_POST);
-            if ($user_id > 0) {
-                $message = $_SESSION['firstname'] . ' Created an admin';
-                $feed_id = create('feeds', ['user_id' => $user_id, 'message' => $message, 'type' => 'success', 'status' => 1]);
-                $code = array('user_id' => $user_id, 'email' => generateRandomString($e_code, 32), 'phone' => generateRandomString($p_code, 9), 'ref' => generateRandomString($e_code, 5));
-                $code_id = create('codes', $code);
-                $_SESSION['message'] = 'Admin addedd successfully';
-                $_SESSION['type'] = 'success';
-                header('location:' . BASE_URL . '/dashboard/admin/');
-                exit();
-            }
+            setMsg('Users addedd successfully', 'success', '/dashboard/users/');
         }else{
             if(isset($_POST['ref'])){
                 $ref_id = selectOne('codes', ['ref' => $_POST['ref']]);
@@ -189,7 +114,9 @@ if (isset($_POST['signup']) || isset($_POST['adminAdd'])) {
          $password = $_POST['password'];
          $email = $_POST['email'];
          $username = $_POST['username'];
+         $phone = $_POST['phone'];
          $cpassword = $_POST['cpassword'];
+         $status = isset($_POST['status']) ? 1 : 0;
     }
 }
 

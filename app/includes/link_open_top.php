@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#101010">
     <!--website-favicon-->
-    <link href="<?php echo FAV; ?>" rel="icon">
+    <link href="<?php echo FAVI; ?>" rel="icon">
     <!--plugin-css
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/plugin.min.css" rel="stylesheet">-->
@@ -18,6 +18,6 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">-->'
     <style>
-        <?php include(ROOT_PATH . '/assets/open/css/main.php'); ?>
+            <?php include(ROOT_PATH . '/assets/open/css/main.php'); ?>
     </style>
 </head>

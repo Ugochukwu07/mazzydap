@@ -9,6 +9,7 @@ function dd($value) { // to be deleted
 $p_code = '0123456789';
 $e_code = 'abcdefghijklmnopqrstuvwzyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $referal_code = '0123456789abcdefghijklmnopqrstuvwzyz';
+$token = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 $user_key = $p_code . $e_code;
 
 function generateRandomString($x, $lenght){

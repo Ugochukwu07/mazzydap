@@ -1,6 +1,7 @@
 <?php 
 include(ROOT_PATH . '/app/database/db.php');
 include(ROOT_PATH . '/app/helpers/file_manger.php');
+include(ROOT_PATH .  '/app/helpers/middleware.php');
 include(ROOT_PATH . '/app/helpers/validate.php');
 
 #tables
@@ -27,6 +28,7 @@ if(isset($_GET['token'])){
 }
 
 if(isset($_GET['p_u_id'])){
+    adminOnly();
     $product =selectOne($table, ['id' => $_GET['p_u_id']]);
     $id = $_GET['p_u_id'];
     $titlem = $product['title'];
@@ -51,12 +53,14 @@ if(isset($_GET['p_id'])){
 }
 
 if(isset($_GET['p_del_id'])){
+    adminOnly();
     $_SESSION['link'] = '/dashboard/products/';
     header('location: ' . BASE_URL . '/dashboard/promt.php?t=' . $table . '&id=' . $_GET['p_del_id'] . '&a=del');
     exit();
 }
 
 if(isset($_POST['add-product'])){
+    adminOnly();
     $genErrors = upload('/assets/dashboard/images/products/', XIMAGE, 'thumb_image');
     if(count($genErrors[0]) === 0){
         $_POST['user_id'] = $xUser['id'];
@@ -84,6 +88,7 @@ if(isset($_POST['add-product'])){
 }
 
 if(isset($_POST['update-product'])){
+    adminOnly();
     if (!empty($_FILES['thumb_image']['name'])) {
         $genErrors = upload('/assets/dashboard/images/products/', XIMAGE, 'thumb_image');
     }else{

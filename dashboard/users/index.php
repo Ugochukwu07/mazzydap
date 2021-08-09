@@ -1,6 +1,7 @@
 <?php 
 	include('../../path.php');
 	include(ROOT_PATH . '/app/controllers/users.php');
+    adminOnly();
 
 	$title = "All";
 ?>
@@ -49,7 +50,7 @@
                               <th>Phone</th>
                               <th>Status</th>
                               <th>Date</th>
-                              <th colspan="2">Actions</th>
+                              <th colspan="1">Actions</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -61,9 +62,9 @@
                                         <td><?php echo $user['phone'];?></td>
                                         <td><?php if($user['status']){echo 'Admin';}else{echo 'User';}?></td>
                                         <td><?php echo date('F j, Y h:i:s', strtotime($user['created_at'])); ?></td>
-                                        <td><a href="<?php echo BASE_URL . '/dashboard/users/view.php?id=' . $user['id']; ?>">View</a></td>
+                                        <td><a href="<?php echo BASE_URL . '/dashboard/users/view.php?id=' . $user['id']; ?>"><i class="icon feather icon-maximize f-16  text-primary"></i></a>
                                         <!-- <td><a class="text-info" href="<?php echo BASE_URL . '/dashboard/users/?u_u_id=' . $user['id']; ?>">Update</a></td> -->
-                                        <td><a class="text-danger" href="<?php echo BASE_URL . '/dashboard/users/?u_del_id=' . $user['id']; ?>">Delete</a></td>
+                                        <a class="text-danger" href="<?php echo BASE_URL . '/dashboard/users/?u_del_id=' . $user['id']; ?>"><i class="icon feather icon-trash-2 f-16  text-danger"></i></a></td>
                                     </tr>
                                 <?php endforeach;?>
                           </tbody>

@@ -1,6 +1,6 @@
 <?php 
 include('path.php');
-
+include(ROOT_PATH . '/app/controllers/contacts.php');
 $title = 'Get A Quote';
 ?>
 <!DOCTYPE html>
@@ -19,7 +19,7 @@ $title = 'Get A Quote';
 							<div class="bread-inner">
 								<div class="bread-menu wow fadeInUp" data-wow-delay=".2s">
 									<ul>
-										<li><a href="index.html">Home</a></li>
+										<li><a href="/">Home</a></li>
 										<li><a href="#">Contact</a></li>
 									</ul>
 								</div>
@@ -37,6 +37,7 @@ $title = 'Get A Quote';
 		<section class="contact-page pad-tb">
 			<div class="container">
 				<div class="row justify-content-center">
+				<?php include(ROOT_PATH . '/app/includes/message.php'); ?>
 					<div class="col-lg-6 v-center">
 						<div class="common-heading text-l">
 							<span>Contact Now</span>
@@ -44,37 +45,38 @@ $title = 'Get A Quote';
 							<p class="mb60 mt20">We will catch you as early as we receive the message</p>
 						</div>
 						<div class="form-block">
-							<form id="contactForm" data-toggle="validator" class="shake">
+							<form id="/contactForm" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="shake">
 								<div class="row">
 									<div class="form-group col-sm-6">
-										<input type="text"  id="name" placeholder="Enter name" required data-error="Please fill Out">
+										<input type="text" name="fullName" id="name" placeholder="Enter name" required data-error="Please fill Out">
 										<div class="help-block with-errors"></div>
 									</div>
 									<div class="form-group col-sm-6">
-										<input type="email"  id="email" placeholder="Enter email" required>
+										<input type="email" name="email" id="email" placeholder="Enter email" required>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="form-group col-sm-6">
-										<input type="text" id="mobile" placeholder="Enter mobile" required data-error="Please fill Out">
+										<input type="tel" id="mobile" name="phone" placeholder="Enter mobile" required data-error="Please fill Out">
 										<div class="help-block with-errors"></div>
 									</div>
 									<div class="form-group col-sm-6">
-										<select name="Dtype" id="Dtype" required>
-											<option value="">Select Requirement</option>
-											<option value="web">web</option>
-											<option value="graphic">graphic</option>
-											<option value="video">video</option>
+										<select name="requirements" id="Dtype" required>
+											<option >Select Requirement</option>
+											<option value="web">Web Design</option>
+											<option value="graphic">Graphic</option>
+											<option value="branding">Branding</option>
+											<option value="arts">Arts</option>
 										</select>
 										<div class="help-block with-errors"></div>
 									</div>
 								</div>
 								<div class="form-group">
-									<textarea id="message" rows="5" placeholder="Enter your message" required></textarea>
+									<textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
 									<div class="help-block with-errors"></div>
 								</div>
-								<button type="submit" id="form-submit" class="btn lnk btn-main bg-btn">Submit <span class="circle"></span>Submit</button>
+								<button type="submit" id="form-submit" name="form-submit" class="btn lnk btn-main bg-btn">Submit <span class="circle"></span>Submit</button>
 								<div id="msgSubmit" class="h3 text-center hidden"></div>
 								<div class="clearfix"></div>
 							</form>

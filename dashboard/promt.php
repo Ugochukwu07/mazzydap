@@ -1,12 +1,13 @@
 <?php 
 	include('../path.php');
 	include(ROOT_PATH . '/app/controllers/products.php');
+    adminOnly();
     if(isset($_POST['promt'])){
         if($_POST['a'] === 'del'){
             delete($_POST['t'], $_POST['id']);
             $location = $_SESSION['link'];
             unset($_SESSION['link']);
-            setMsg('Product Deleted Successfuly', 'success', $location);
+            setMsg($_POST['t'] . ' Deleted Successfuly', 'success', $location);
         }
     }
 

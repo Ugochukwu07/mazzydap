@@ -1,5 +1,6 @@
 <?php 
 include('path.php');
+include(ROOT_PATH . '/app/controllers/products.php');
 
 $title = 'Home';
 ?>
@@ -335,50 +336,21 @@ $title = 'Home';
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-sm-8 mt60 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="isotope_item hover-scale">
-                        <div class="item-image" data-tilt data-tilt-max="2" data-tilt-speed="1000">
-                            <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-d.jpg" alt="image" class="img-fluid" /> </a>
-                        </div>
-                        <div class="item-info">
-                            <h4><a href="#">Ecommerce Development</a></h4>
-                            <p>Web Application</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-4 mt60 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="isotope_item hover-scale">
-                        <div class="item-image" data-tilt data-tilt-max="2" data-tilt-speed="1000">
-                            <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-1.jpg" alt="image" class="img-fluid" /> </a>
-                        </div>
-                        <div class="item-info">
-                            <h4><a href="#">Creative App</a></h4>
-                            <p>iOs, Android</p>
+                <?php $product = selectAll($table); ?>
+                <?php for($i=0; $i < 5; $i++):?>
+                    <?php $cat = selectOne($table2, ['id' => $product[$i]['cat_id']]);?>
+                    <div class="col-lg-4 col-12 col-sm-4 mt60 wow fadeInUp" data-wow-delay="0.<?php echo ($i +1)*2;?>s">
+                        <div class="isotope_item hover-scale">
+                            <div class="item-image" data-tilt data-tilt-max="2" data-tilt-speed="1000">
+                                <a href="#"><img src="<?php echo BASE_URL . '/assets/dashboard/images/products/' . $product[$i]['thumb_image']; ?>" alt="image" class="img-fluid" /> </a>
+                            </div>
+                            <div class="item-info">
+                                <h4><a href="#"><?php echo $product[$i]['title']?></a></h4>
+                                <p><?php echo $cat['name']; ?></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-4 mt60 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="isotope_item hover-scale">
-                        <div class="item-image" data-tilt data-tilt-max="2" data-tilt-speed="1000">
-                            <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-6.jpg" alt="image" class="img-fluid" /> </a>
-                        </div>
-                        <div class="item-info">
-                            <h4><a href="#">Brochure Design</a></h4>
-                            <p>Graphic, Print</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-sm-8 mt60 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="isotope_item hover-scale">
-                        <div class="item-image" data-tilt data-tilt-max="2" data-tilt-speed="1000">
-                            <a href="#"><img src="<?php echo BASE_URL . '/assets/open/images/'; ?>portfolio/image-c.jpg" alt="image" class="img-fluid" /> </a>
-                        </div>
-                        <div class="item-info">
-                            <h4><a href="#">Icon Pack</a></h4>
-                            <p>iOs, Android</p>
-                        </div>
-                    </div>
-                </div>
+                <?php endfor;?>
             </div>
             <div class="row">
                 <div class="col-lg-12 center">

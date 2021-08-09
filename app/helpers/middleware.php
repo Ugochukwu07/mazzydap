@@ -19,16 +19,10 @@ function usersOnly($redirect = '/signin'){
 #admins Only
 function adminOnly(){
     if (empty($_SESSION['id'])){
-        $_SESSION['message'] = 'You are not Authorized';
-        $_SESSION['type'] = 'danger';
-        header('location:' . BASE_URL . '/signin');
-        exit();
+        setMsg('Please Sign in', 'danger', '/signin');
     }
-    if(!empty($_SESSION['id'] && $_SESSION['admin'] != 1)){
-        $_SESSION['message'] = 'You are not Authorized';
-        $_SESSION['type'] = 'danger';
-        header('location:' . BASE_URL . '/dashboard/user/');
-        exit();
+    if(!empty($_SESSION['id'] && $_SESSION['status'] != 1)){
+        setMsg('You are not Authorized', 'danger', '/');
     }
 }
 

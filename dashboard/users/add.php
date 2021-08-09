@@ -1,7 +1,8 @@
 <?php 
 	include('../../path.php');
 	include(ROOT_PATH . '/app/controllers/users.php');
-
+    adminOnly();
+    
 	$title = "Add";
 ?>
 <!DOCTYPE html>
@@ -49,12 +50,29 @@
                             <small class="badge badge-light-danger "><?php echo $errors['type']; ?></small>
                             <small class="badge badge-light-danger "><?php echo $errors['empty']; ?></small> -->
                             <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" name="firstname" value="<?php echo $firstname;?>" id="firstname" placeholder="Userame Here..." required>
+                                <small class="badge badge-light-danger "><?php echo $errors['ef']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['efi']; ?></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="lastname" class="form-control" name="lastname" value="<?php echo $lastname;?>" id="lastname" placeholder="Email Here..." required>
+                                <small class="badge badge-light-danger "><?php echo $errors['el']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['eli']; ?></small>
+                            </div>
+                            <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" name="username" value="<?php echo $username;?>" id="username" placeholder="Userame Here..." required>
+                                <small class="badge badge-light-danger "><?php echo $errors['unr']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['unr1']; ?></small>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" name="email" value="<?php echo $email;?>" id="email" placeholder="Email Here..." required>
+                                <small class="badge badge-light-danger "><?php echo $errors['eme']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['emei']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['exe']; ?></small>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Phone</label>
@@ -63,10 +81,25 @@
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" name="password" value="<?php echo $password;?>" id="password" placeholder="Password Here..." required>
+                                <small class="badge badge-light-danger "><?php echo $errors['pr']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['pri']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['psl']; ?></small>
                             </div>
                             <div class="form-group">
                                 <label for="cpassword">Confirm Password</label>
                                 <input type="password" class="form-control" name="cpassword" value="<?php echo $cpassword;?>" id="cpassword" placeholder="Password Here..." required>
+                                <small class="badge badge-light-danger "><?php echo $errors['cpse']; ?></small>
+                                <small class="badge badge-light-danger "><?php echo $errors['cps']; ?></small>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <?php if(empty($status)):?>
+                                        <input class="form-check-input" name="status" type="checkbox" id="status">
+                                    <?php else:?>
+                                        <input class="form-check-input" name="status" checked type="checkbox" id="status">
+                                    <?php endif; ?>
+                                    <label class="form-check-label" for="status">Admin</label>
+                                </div>
                             </div>
                             <button type="submit" name="add-user" class="btn  btn-primary">Add User</button>
                         </form>

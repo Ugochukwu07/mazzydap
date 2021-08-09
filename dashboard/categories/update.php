@@ -1,12 +1,7 @@
 <?php 
 	include('../../path.php');
 	include(ROOT_PATH . '/app/controllers/categories.php');
-    /* if(!isset($_GET['cat_id']) || empty($id)){
-        $_SESSION['message'] = 'Please Select a Category';
-        $_SESSION['type'] = 'warning';
-        header('location: ' . BASE_URL . '/dashboard/categories/');
-        exit();
-    } */
+    adminOnly();
 
 	$title = "Update";
 ?>

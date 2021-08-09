@@ -1,6 +1,7 @@
 <?php 
 	include('../path.php');
 	include(ROOT_PATH . '/app/controllers/users.php');
+    adminOnly();
 
 	$title = $xUser['username'] . "'s Dashboard";
 ?>
@@ -38,7 +39,7 @@
             <div class="col-xl-6 col-md-12">
                 <div class="card flat-card">
                     <div class="row border-bottom">
-                        <div class="col-sm-6 col-md-4 card-body border-right">
+                        <div class="col-sm-6 col-6 col-md-4 card-body border-right border-bottom">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <i class="icon feather icon-shopping-cart text-primary mb-1 d-block"></i>
@@ -49,24 +50,57 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 card-body border-right">
+                        <div class="col-sm-6 col-6 col-md-4 card-body border-right border-bottom">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <i class="icon feather icon-file-text text-primary mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5><?php echo count(selectAll('files')) + 7000;?></h5>
+                                    <h5><?php echo count(selectAll('files'))?></h5>
                                     <span>Files</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 card-body">
+                        <div class="col-sm-6 col-6 col-md-4 card-body border-right border-bottom">
                             <div class="row">
                                 <div class="col-sm-4">
                                     <i class="icon feather icon-users text-primary mb-1 d-block"></i>
                                 </div>
                                 <div class="col-sm-8 text-md-center">
-                                    <h5><?php echo count(selectAll('users', ['status' => 0])) + 7000;?></h5>
+                                    <h5><?php echo count(selectAll('users', ['status' => 0]))?></h5>
+                                    <span>Clients</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-6 col-md-4 card-body border-right border-bottom">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="icon feather icon-mail text-primary mb-1 d-block"></i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5><?php echo count(selectAll('contact'));?></h5>
+                                    <span>Messages</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-6 col-md-4 card-body border-right border-bottom">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="icon feather icon-align-right text-primary mb-1 d-block"></i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5><?php echo count(selectAll('category'))?></h5>
+                                    <span>Category</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-6 col-md-4 card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <i class="icon feather icon-users text-primary mb-1 d-block"></i>
+                                </div>
+                                <div class="col-sm-8 text-md-center">
+                                    <h5><?php echo count(selectAll('users', ['status' => 0]))?></h5>
                                     <span>Growth</span>
                                 </div>
                             </div>
@@ -76,7 +110,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h5>Recent Products</h5>
-                        <hr>
                         <?php $products = selectAll('products');?>
                         <?php for($i = 0; $i < 5; $i++):?>
                             <div class="card mb-3">
@@ -91,43 +124,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Department wise monthly sales report</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row pb-2">
-                            <div class="col-auto m-b-10">
-                                <h3 class="mb-1">$21,356.46</h3>
-                                <span>Total Sales</span>
-                            </div>
-                            <div class="col-auto m-b-10">
-                                <h3 class="mb-1">$1935.6</h3>
-                                <span>Average</span>
-                            </div>
-                        </div>
-                        <div id="account-chart"></div>
-                    </div>
-                </div>
-            </div>
             <!-- support-section end -->
             <!-- customer-section start -->
             <div class="col-xl-6 col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h6>Customer Satisfaction</h6>
-                        <span>It takes continuous effort to maintain high customer satisfaction levels Internal and external.</span>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <div class="col">
-                                <div id="satisfaction-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card table-card">
                     <div class="card-header">
-                        <h5>New Products</h5>
+                        <h5>New Categories</h5>
                     </div>
                     <div class="pro-scroll" style="height:255px;position:relative;">
                         <div class="card-body p-0">
@@ -135,77 +137,21 @@
                                 <table class="table table-hover m-b-0">
                                     <thead>
                                         <tr>
-                                            <th>Product Name</th>
-                                            <th>Image</th>
-                                            <th>Status</th>
-                                            <th>Price</th>
+                                            <th>Name</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>HeadPhone</td>
-                                            <td><img src="assets/images/widget/p1.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-warning">Pending</label></div>
-                                            </td>
-                                            <td>$10</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16  text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Iphone 6</td>
-                                            <td><img src="assets/images/widget/p2.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-danger">Cancel</label></div>
-                                            </td>
-                                            <td>$20</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16  text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jacket</td>
-                                            <td><img src="assets/images/widget/p3.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-success">Success</label></div>
-                                            </td>
-                                            <td>$35</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16 text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sofa</td>
-                                            <td><img src="assets/images/widget/p4.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-danger">Cancel</label></div>
-                                            </td>
-                                            <td>$85</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16 text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Iphone 6</td>
-                                            <td><img src="assets/images/widget/p2.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-success">Success</label></div>
-                                            </td>
-                                            <td>$20</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16 text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>HeadPhone</td>
-                                            <td><img src="assets/images/widget/p1.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-warning">Pending</label></div>
-                                            </td>
-                                            <td>$50</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16 text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Iphone 6</td>
-                                            <td><img src="assets/images/widget/p2.jpg" alt="" class="img-20"></td>
-                                            <td>
-                                                <div><label class="badge badge-light-danger">Cancel</label></div>
-                                            </td>
-                                            <td>$30</td>
-                                            <td><a href="#!"><i class="icon feather icon-edit f-16 text-success"></i></a><a href="#!"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a></td>
-                                        </tr>
+                                        <?php $categories = selectAll('category');?>
+                                        <?php foreach($categories as $cat):?>
+                                            <tr>
+                                                <td><?php echo $cat['name']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo BASE_URL . '/dashboard/categories/update.php?cat_id=' . $cat['id']; ?>"><i class="icon feather icon-edit f-16  text-success"></i></a>
+                                                    <a href="<?php echo BASE_URL . '/dashboard/categories/?cat_del_id=' . $cat['id']; ?>"><i class="feather icon-trash-2 ml-3 f-16 text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -214,68 +160,6 @@
                 </div>
             </div>
             <div class="col-xl-6 col-md-12">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card prod-p-card background-pattern">
-                            <div class="card-body">
-                                <div class="row align-items-center m-b-0">
-                                    <div class="col">
-                                        <h6 class="m-b-5">Total Profit</h6>
-                                        <h3 class="m-b-0">$1,783</h3>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-money-bill-alt text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card prod-p-card bg-primary background-pattern-white">
-                            <div class="card-body">
-                                <div class="row align-items-center m-b-0">
-                                    <div class="col">
-                                        <h6 class="m-b-5 text-white">Total Orders</h6>
-                                        <h3 class="m-b-0 text-white">15,830</h3>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-database text-white"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card prod-p-card bg-primary background-pattern-white">
-                            <div class="card-body">
-                                <div class="row align-items-center m-b-0">
-                                    <div class="col">
-                                        <h6 class="m-b-5 text-white">Average Price</h6>
-                                        <h3 class="m-b-0 text-white">$6,780</h3>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-dollar-sign text-white"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card prod-p-card background-pattern">
-                            <div class="card-body">
-                                <div class="row align-items-center m-b-0">
-                                    <div class="col">
-                                        <h6 class="m-b-5">Product Sold</h6>
-                                        <h3 class="m-b-0">6,784</h3>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-tags text-primary"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card feed-card">
                     <div class="card-header">
                         <h5>Feeds</h5>
