@@ -855,4 +855,36 @@ function passVal($user){
 }
 
 
-?>
+function tempVal($mail){
+    $error = array();
+    $errors = array();
+    #regex
+    $regexname = "/^[a-zA-Z\s.]{1}+[a-zA-Z\s]+$/";
+
+    #subject
+    if(empty($mail['subject'])){
+        array_push($error, 'll');
+        $errors['subject'] = 'Cannot be left empty';
+    }else{
+        $errors['subject'] = '';
+    }
+
+    #Doest not match Subject
+    if(!empty($mail['subject']) && !preg_match($regexname, $mail['subject'])){
+        array_push($error, '11');
+        $errors['subject_match'] = 'Invalid Characters in Subject';
+    }else{
+        $errors['subject_match'] = '';
+    }
+
+    #body
+    if(empty($mail['body'])){
+        array_push($error, 'll');
+        $errors['body'] = 'Cannot be left empty';
+    }else{
+        $errors['body'] = '';
+    }
+    
+    $genErrors = array($errors, $error);
+    return $genErrors;
+}

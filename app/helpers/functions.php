@@ -24,7 +24,7 @@ function sessionDeclare($data = []){
 }
 
 function setMsg($message, $type, $location){
-    $_SESSION['message'] = $message;
+    $_SESSION['message'] = ucwords($message);
     $_SESSION['type'] = $type;
     header('location:' . BASE_URL . $location);
     exit();

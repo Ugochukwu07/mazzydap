@@ -52,43 +52,34 @@
 						<label>Users</label>
 						<span>List of users in the mazzy dap website.</span>
 					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/users/'; ?>"><span class="pc-micon"><i data-feather="users"></i></span>All Users</a></li>
-					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/users/add.php'; ?>"><span class="pc-micon"><i data-feather="user-plus"></i></span>Add</a></li>
-					</li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/users/'; ?>"><span class="pc-micon"><i data-feather="users"></i></span>All Users</a></li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/users/add.php'; ?>"><span class="pc-micon"><i data-feather="user-plus"></i></span>Add</a></li>
 					<li class="pc-item pc-caption">
 						<label>Products</label>
 						<span>Add and remove products from the database.</span>
 					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/products/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
-					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/products/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
-					</li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/products/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/products/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
 					<li class="pc-item pc-caption">
 						<label>Categories</label>
 						<span>Add and remove Categories from the database.</span>
 					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/categories/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/categories/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/categories/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
+					<li class="pc-item pc-caption">
+						<label>Emails</label>
+						<span>Send emails and view tickets.</span>
 					</li>
 					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/categories/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
+						<a class="pc-link" href="<?php echo BASE_URL . '/dashboard/email/add.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a>
 					</li>
-                    
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/email/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
 					<li class="pc-item pc-caption">
 						<label>Files</label>
 						<span>Add and remove Files from the database.</span>
 					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/file/.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
-					</li>
-					<li class="pc-item">
-						<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/file/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
-					</li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/file/.php'; ?>"><span class="pc-micon"><i data-feather="plus"></i></span>Add</a></li>
+					<li class="pc-item"><a class="pc-link" href="<?php echo BASE_URL . '/dashboard/file/'; ?>"><span class="pc-micon"><i data-feather="file-text"></i></span>View All</a></li>
 
 				</ul>
 				<div class="p-3 m-4 bg-secondary rounded">

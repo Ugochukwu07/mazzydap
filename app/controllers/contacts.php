@@ -10,10 +10,14 @@ $errors = array();
 
 #error variables
 $errors['subject'] = $errors['firstname'] = $errors['lastname'] = $errors['phone'] = $errors['email'] = $errors['message'] = '';
-$subject = $firstname = $lastname = $phone = $email = $message = '';
+$subject = $firstname = $lastname = $phone = $email = $message = $body = $errors['body'] = '';
+$errors['subject_match'] = '';
 
 #tables
 $table = 'contact';
+$table2 = 'mail';
+
+$mails = selectAll($table2);
 
 #User contact
 if(isset($_POST['contact-user'])){
@@ -73,7 +77,7 @@ if(isset($_POST['re-contact'])){
         mailing($template_file, $swap_var);
         $_SESSION['message'] = 'User Contacted successfully';
         $_SESSION['type'] = 'primary';
-        header('location:' . BASE_URL . '/dashboard/admin/contact/');
+        header('location:' . BASE_URL . '/dashboard/contact/');
         exit();
 }
 
@@ -123,9 +127,127 @@ if(isset($_POST['adminContactU'])){
     exit();
 }
 
+/* 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */
 
+#addTemp
+if(isset($_POST['addTemp'])){
+    adminOnly();
+    $genErrors = tempVal($_POST);
+    $errors = $genErrors[0];
+    $subMainError = $genErrors[1];
+    if(count($subMainError) === 0){
+        unset($_POST['addTemp']);
+        $XMAIL['top'] = str_replace("' . LOGO . '", LOGO, XMAIL['top']);
+        $body = $XMAIL['top'] . $_POST['body'] . XMAIL['bottom'];
+        $_POST['body'] = htmlentities($body);
+        $_POST['user_id'] = $_SESSION['id'];
+        $mail = create($table2, $_POST);
+        $_POST['subject'] = str_replace(' ', '', $_POST['subject']);
+        $filename = $_POST['subject'] . '.php';
+        $myfile = fopen($filename, "w") or die("Unable to open file!");
+        $content = $_POST['body'];
+        fwrite($myfile, $content);
+        fclose($myfile);
+        $message = 'Admin ' . $xUser['firstname'] . ' ' . $xUser['lastname'] . ' created a template';
+        //$feeds = create('feeds', ['user_id' => $_SESSION['id'], 'type' => 'primary', 'status' => 1, 'message' => $message]);
+        setMsg($message, 'primary', '/dashboard/email/');
+    }else{
+        $subject = $_POST['subject'];
+        $body = $_POST['body'];
+    }
+}
 
+#updateTemp
+if(isset($_POST['updateTemp'])){
+    adminOnly();
+    $genErrors = tempVal($_POST);
+    $errors = $genErrors[0];
+    $subMainError = $genErrors[1];
+    if(count($subMainError) === 0){
+        $id = $_POST['id'];
+        unset($_POST['updateTemp'], $_POST['id']);
+        $XMAIL['top'] = str_replace("' . LOGO . '", LOGO, XMAIL['top']);
+        $body = $XMAIL['top'] . $_POST['body'] . XMAIL['bottom'];
+        $_POST['body'] = $body;
+        $_POST['user_id'] = $_SESSION['id'];
+        $mail = update($table2, $id, $_POST);
+        $_POST['subject'] = str_replace(' ', '', $_POST['subject']);
+        $filename = $_POST['subject'] . '.php';
+        $myfile = fopen($filename, "w") or die("Unable to open file!");
+        $content = $_POST['body'];
+        fwrite($myfile, $content);
+        fclose($myfile);
+        $message = 'Admin ' . $xUser['firstname'] . ' ' . $xUser['lastname'] . ' updated a template';
+        //$feeds = create('feeds', ['user_id' => $_SESSION['id'], 'type' => 'primary', 'status' => 1, 'message' => $message]);
+        setMsg($message, 'info', '/dashboard/email/');
+    }else{
+        $subject = $_POST['subject'];
+        $body = $_POST['body'];
+    }
+}
 
+#privateSend
+if(isset($_POST['privateSend'])){
+    if($_POST['email'] == 0){
+        $_SESSION['message'] = 'Please Select an Email';
+        $_SESSION['type'] = 'danger';
+        header('location: ' . BASE_URL . '/dashboard/email/private.php?id=' . $_POST['id']);
+        exit();
+    }else{
+        $mail = selectOne($table2, ['id' => $_POST['id']]);
+        $user = selectOne('users', ['id' => $_POST['email']]);
+        $filename = str_replace(' ', '', $mail['subject']);
+        $template_file = $filename . '.php';
+        $email_from = $user['email'];
+        foreach($user as $key => $value){
+        $swap_var['{' . $key . '}'] = $value;}
+        $swap_vars = array(
+            "{TITLE}" => $mail['subject'],
+            "{EMAIL_TITLE}" => $mail['subject'],
+            "{TO_NAME}" => $user['firstname'] . ' ' . $user['lastname'], 
+            "{TO_EMAIL}" => $email_from
+        );
+        foreach($swap_vars as $key => $value){
+            $swap_var[$key] = $value;}
+        mailing($template_file, $swap_var);
+        setMsg('User : ' . $user['firstname'] . ' ' . $user['lastname'] . ' Mail sent Successfully', 'success', '/dashboard/email/');
+    }
+}
 
+#send to all
+if(isset($_GET['all_id'])){
+    $mail_id = $_GET['all_id'];
+    $mail = selectOne($table2, ['id' => $mail_id]);
+    $users = selectAll('users', ['status' => 1]);
+    $filename = str_replace(' ', '', $mail['subject']);
+    $template_file = $filename . '.php';
+    foreach($users as $user){
+        foreach($user as $key => $value){
+            $swap_var['{' . $key . '}'] = $value;
+        }
+        $swap_vars = array(
+            "{TITLE}" => $mail['subject'],
+            "{EMAIL_TITLE}" => $mail['subject'],
+            "{TO_NAME}" => $user['firstname'] . ' ' . $user['lastname'], 
+            "{TO_EMAIL}" => $user['email']
+        );
+        foreach($swap_vars as $key => $value){
+            $swap_var[$key] = $value;
+        }
+        mailing($template_file, $swap_var);
+    }
+    setMsg('Mail sent to all users Successfully', 'success', '/dashboard/email/');
+}
 
-?>
+#delete template
+if(isset($_GET['del_id'])){
+    $id = $_GET['del_id'];
+    $mail = selectOne($table2, ['id' => $id]);
+    $filename = str_replace(' ', '', $mail['subject']) . '.php';
+    delete($table2, $id);
+    unlink($filename);
+    $_SESSION['message'] = 'Mail Template deleted Successfully';
+    $_SESSION['type'] = 'success';
+    header('location: ' . BASE_URL . '/dashboard/email/');
+    exit();
+}

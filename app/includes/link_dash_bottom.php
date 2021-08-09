@@ -8,5 +8,8 @@
 <script src="<?php echo BASE_URL . '/'?>assets/dashboard/js/uikit.min.js"></script>
 <!-- Apex Chart -->
 <script src="<?php echo BASE_URL . '/'?>assets/dashboard/js/plugins/apexcharts.min.js"></script>
+<script src="<?php echo BASE_URL . '/'?>assets/dashboard/js/ckeditor/ckeditor.js"></script>
+<script src="<?php echo BASE_URL . '/'?>assets/dashboard/js/editor-ckeditor.js"></script>
 <!-- custom-chart js -->
 <script src="<?php echo BASE_URL . '/'?>assets/dashboard/js/pages/dashboard-sale.js"></script>
+<script src="<?php echo BASE_URL . '/'?>assets/dashboard/js/main.js"></script>
